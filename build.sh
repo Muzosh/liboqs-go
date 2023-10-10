@@ -1,24 +1,23 @@
+#!/bin/bash
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+LIBOQS_ROOT_DIR="$script_dir/liboqs"
+
 # Remove old build files and make new build directory
 rm -rf oqsgo
 mkdir -p oqsgo
 
 if [ -e "liboqs" ]; then
-    echo "liboqs directory already exists, skipping cloning"; \
-else \
-    git clone -b main https://github.com/open-quantum-safe/liboqs.git; \
+    echo "liboqs directory already exists, skipping cloning"
+else
+    git submodule update --init --remote --recursive
 fi
 
-cmake -GNinja -B liboqs/build liboqs && ninja -j $(nproc) -C liboqs/build
-
-# Set the path to the liboqs root directory
-LIBOQS_ROOT_DIR="liboqs"
+cmake -GNinja -DBUILD_SHARED_LIBS=ON -B liboqs/build liboqs && ninja -j $(nproc) -C liboqs/build
 
 # Compile the C++ wrapper
 swig -go -cgo -intgosize 64 -c++ -o ./oqsgo/oqsgo_wrap.cpp -I$LIBOQS_ROOT_DIR/build/include oqsgo.i
 
-# # Compile the C++ wrapper and link it with liboqs
-# # without -std=c++11 or -std=c++20 it fails with exception definition
-# gcc -std=c++20 -O2 -fPIC -I$LIBOQS_ROOT_DIR/build/include -c ./build/oqsgo_wrap.cpp -o ./build/oqsgo_wrap.o
+sed -i "" "s/#undef intgo/#undef intgo\n#cgo CFLAGS: -I\${SRCDIR}\/..\/liboqs\/build\/include\n#cgo LDFLAGS: -L\${SRCDIR}\/..\/liboqs\/build\/lib -loqs/" oqsgo/oqsgo.go
 
-# # Create the Go wrapper
-# gcc -std=c++20 -shared ./build/oqsgo_wrap.o -L$LIBOQS_ROOT_DIR/build/lib -loqs -lssl -lcrypto -o ./build/oqsgo.so
+export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$script_dir/liboqs/build/lib"
