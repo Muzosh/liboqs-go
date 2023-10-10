@@ -7,11 +7,7 @@ LIBOQS_ROOT_DIR="$script_dir/liboqs"
 rm -rf oqsgo
 mkdir -p oqsgo
 
-if [ -e "liboqs" ]; then
-    echo "liboqs directory already exists, skipping cloning"
-else
-    git submodule update --init --remote --recursive
-fi
+git submodule update --init --remote --recursive
 
 cmake -GNinja -DBUILD_SHARED_LIBS=ON -B liboqs/build liboqs && ninja -j $(nproc) -C liboqs/build
 
