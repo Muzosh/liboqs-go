@@ -1,3 +1,4 @@
+
 # liboqs-go
 
 Custom LibOQS wrapper for Go
@@ -7,9 +8,9 @@ Custom LibOQS wrapper for Go
 ### GOPATH approach
 
 1. Make sure your $GOPATH is set: `echo $GOPATH`
-2. Clone this repository into your go path: `git clone https://github.com/Muzosh/liboqs-go $GOPATH/Muzosh/liboqs-go`
+2. Clone this repository into your go path: `git clone https://github.com/Muzosh/liboqs-go $GOPATH/src/github.com/\!muzosh/liboqs-go`
 3. If you already have libOQS repository on the system, specify its location by `export LIBOQS_ROOT=/path/to/liboqs`
-4. Install wrapper: `cd $GOPATH/src/github.com/Muzosh/liboqs-go && ./build-for-gopath.sh`
+4. Install wrapper: `cd $GOPATH/src/github.com/\!muzosh/liboqs-go && ./build-for-gopath.sh`
 5. In your Go code use: `import "github.com/Muzosh/liboqs-go/oqsgo"` and then `oqsgo.XY()`
 6. Before building or running the code, export there environment variables:
 

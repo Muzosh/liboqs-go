@@ -152,39 +152,40 @@ extern swig_intgo _wrap_OQS_EXTERNAL_LIB_ERROR_OPENSSL_oqsgo_4e8e82db66bc50ad(vo
 */
 import "C"
 
-import (
-	_ "runtime/cgo"
-	"sync"
-	"unsafe"
-)
+import "unsafe"
+import _ "runtime/cgo"
+import "sync"
+
 
 type _ unsafe.Pointer
+
+
 
 var Swig_escape_always_false bool
 var Swig_escape_val interface{}
 
+
 type _swig_fnptr *byte
 type _swig_memberptr *byte
 
-func getSwigcptr(v interface{ Swigcptr() uintptr }) uintptr {
+
+func getSwigcptr(v interface { Swigcptr() uintptr }) uintptr {
 	if v == nil {
 		return 0
 	}
 	return v.Swigcptr()
 }
 
+
 type _ sync.Mutex
 
-type swig_gostring struct {
-	p uintptr
-	n int
-}
 
+type swig_gostring struct { p uintptr; n int }
 func swigCopyString(s string) string {
-	p := *(*swig_gostring)(unsafe.Pointer(&s))
-	r := string((*[0x7fffffff]byte)(unsafe.Pointer(p.p))[:p.n])
-	Swig_free(p.p)
-	return r
+  p := *(*swig_gostring)(unsafe.Pointer(&s))
+  r := string((*[0x7fffffff]byte)(unsafe.Pointer(p.p))[:p.n])
+  Swig_free(p.p)
+  return r
 }
 
 func Swig_free(arg1 uintptr) {
@@ -260,7 +261,7 @@ func OQS_randombytes(arg1 int64) (_swig_ret string) {
 	swig_r_p := C._wrap_OQS_randombytes_oqsgo_4e8e82db66bc50ad(C.swig_type_4(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
-	swig_r_1 = swigCopyString(swig_r)
+ swig_r_1 = swigCopyString(swig_r) 
 	return swig_r_1
 }
 
@@ -280,7 +281,7 @@ func OQS_SIG_alg_identifier(arg1 int64) (_swig_ret string) {
 	swig_r_p := C._wrap_OQS_SIG_alg_identifier_oqsgo_4e8e82db66bc50ad(C.swig_type_7(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
-	swig_r_1 = swigCopyString(swig_r)
+ swig_r_1 = swigCopyString(swig_r) 
 	return swig_r_1
 }
 
@@ -354,7 +355,7 @@ func (arg1 SwigcptrOQS_SIGNATURE) GetMethod_name() (_swig_ret string) {
 	swig_r_p := C._wrap_OQS_SIGNATURE_method_name_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
-	swig_r_1 = swigCopyString(swig_r)
+ swig_r_1 = swigCopyString(swig_r) 
 	return swig_r_1
 }
 
@@ -373,7 +374,7 @@ func (arg1 SwigcptrOQS_SIGNATURE) GetAlg_version() (_swig_ret string) {
 	swig_r_p := C._wrap_OQS_SIGNATURE_alg_version_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
-	swig_r_1 = swigCopyString(swig_r)
+ swig_r_1 = swigCopyString(swig_r) 
 	return swig_r_1
 }
 
@@ -547,7 +548,7 @@ func OQS_KEM_alg_identifier(arg1 int64) (_swig_ret string) {
 	swig_r_p := C._wrap_OQS_KEM_alg_identifier_oqsgo_4e8e82db66bc50ad(C.swig_type_32(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
-	swig_r_1 = swigCopyString(swig_r)
+ swig_r_1 = swigCopyString(swig_r) 
 	return swig_r_1
 }
 
@@ -621,7 +622,7 @@ func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetMethod_name() (_swig_ret string) {
 	swig_r_p := C._wrap_OQS_KEYENCAPSULATION_method_name_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
-	swig_r_1 = swigCopyString(swig_r)
+ swig_r_1 = swigCopyString(swig_r) 
 	return swig_r_1
 }
 
@@ -640,7 +641,7 @@ func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetAlg_version() (_swig_ret string) {
 	swig_r_p := C._wrap_OQS_KEYENCAPSULATION_alg_version_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
-	swig_r_1 = swigCopyString(swig_r)
+ swig_r_1 = swigCopyString(swig_r) 
 	return swig_r_1
 }
 
@@ -820,7 +821,6 @@ type OQS_KEYENCAPSULATION interface {
 }
 
 type OQS_STATUS int
-
 func _swig_getOQS_ERROR() (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
 	swig_r = (OQS_STATUS)(C._wrap_OQS_ERROR_oqsgo_4e8e82db66bc50ad())
@@ -828,7 +828,6 @@ func _swig_getOQS_ERROR() (_swig_ret OQS_STATUS) {
 }
 
 var OQS_ERROR OQS_STATUS = _swig_getOQS_ERROR()
-
 func _swig_getOQS_SUCCESS() (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
 	swig_r = (OQS_STATUS)(C._wrap_OQS_SUCCESS_oqsgo_4e8e82db66bc50ad())
@@ -836,7 +835,6 @@ func _swig_getOQS_SUCCESS() (_swig_ret OQS_STATUS) {
 }
 
 var OQS_SUCCESS OQS_STATUS = _swig_getOQS_SUCCESS()
-
 func _swig_getOQS_EXTERNAL_LIB_ERROR_OPENSSL() (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
 	swig_r = (OQS_STATUS)(C._wrap_OQS_EXTERNAL_LIB_ERROR_OPENSSL_oqsgo_4e8e82db66bc50ad())
@@ -844,7 +842,6 @@ func _swig_getOQS_EXTERNAL_LIB_ERROR_OPENSSL() (_swig_ret OQS_STATUS) {
 }
 
 var OQS_EXTERNAL_LIB_ERROR_OPENSSL OQS_STATUS = _swig_getOQS_EXTERNAL_LIB_ERROR_OPENSSL()
-
 const OQS_RAND_alg_system string = "system"
 const OQS_RAND_alg_nist_kat string = "NIST-KAT"
 const OQS_RAND_alg_openssl string = "OpenSSL"
@@ -926,21 +923,21 @@ const OQS_KEM_algs_length int = 29
 
 type SwigcptrOQS_KEM uintptr
 type OQS_KEM interface {
-	Swigcptr() uintptr
+	Swigcptr() uintptr;
 }
-
 func (p SwigcptrOQS_KEM) Swigcptr() uintptr {
 	return uintptr(p)
 }
 
 type SwigcptrOQS_SIG uintptr
 type OQS_SIG interface {
-	Swigcptr() uintptr
+	Swigcptr() uintptr;
 }
-
 func (p SwigcptrOQS_SIG) Swigcptr() uintptr {
 	return uintptr(p)
 }
+
+
 
 var swigDirectorTrack struct {
 	sync.Mutex
@@ -982,3 +979,5 @@ func swigDirectorDelete(c int) {
 	}
 	delete(swigDirectorTrack.m, c)
 }
+
+
