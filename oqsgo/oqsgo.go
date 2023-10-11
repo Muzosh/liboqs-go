@@ -149,8 +149,6 @@ extern swig_intgo _wrap_OQS_ERROR_oqsgo_4e8e82db66bc50ad(void);
 extern swig_intgo _wrap_OQS_SUCCESS_oqsgo_4e8e82db66bc50ad(void);
 extern swig_intgo _wrap_OQS_EXTERNAL_LIB_ERROR_OPENSSL_oqsgo_4e8e82db66bc50ad(void);
 #undef intgo
-
-#cgo pkg-config: liboqs
 */
 import "C"
 

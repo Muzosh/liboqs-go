@@ -11,3 +11,5 @@ Custom LibOQS wrapper for Go
 5. (MacOS) run your code with `DYLD_FALLBACK_LIBRARY_PATH=$GOPATH/src/github.com/Muzosh/liboqs-go/liboqs/build/lib GO111MODULE=off go run .`
 
 ### Go modules approach
+1. `go get github.com/Muzosh/liboqs-go/oqsgo`
+2. ``export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`go env GOPATH`/pkg/mod/github.com/\!muzosh/liboqs-go@*/.config``
