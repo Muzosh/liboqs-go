@@ -13,11 +13,14 @@ else \
     export LIBOQS_ROOT=$(pwd)/liboqs; \
 fi
 
-if [[ -e "$LIBOQS_ROOT/build" ]]; then
+OS=$(uname)
+if [[ "$OS" == "Darwin" && -e "$LIBOQS_ROOT/build/lib/liboqs.dylib" ]]; then
     echo "liboqs library already builded, skipping compilation"; \
-else \
+elif [[ "$OS" == "Linux" && -e "$LIBOQS_ROOT/build/lib/liboqs.so" ]]; then
+    echo "liboqs library already builded, skipping compilation"; \
+else
     rm -rf $LIBOQS_ROOT/build; \
-    cmake -GNinja -B $LIBOQS_ROOT/build $LIBOQS_ROOT && ninja -j $(nproc) -C $LIBOQS_ROOT/build; \
+    cmake -GNinja -DBUILD_SHARED_LIBS=ON -B $LIBOQS_ROOT/build $LIBOQS_ROOT && ninja -j $(nproc) -C $LIBOQS_ROOT/build; \
 fi
 
 # Compile the C++ wrapper
