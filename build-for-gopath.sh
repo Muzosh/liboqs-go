@@ -14,6 +14,6 @@ cmake -GNinja -DBUILD_SHARED_LIBS=ON -B liboqs/build liboqs && ninja -j $(nproc)
 # Compile the C++ wrapper
 swig -go -cgo -intgosize 64 -c++ -o ./oqsgo/oqsgo_wrap.cpp -I$LIBOQS_ROOT_DIR/build/include oqsgo.i
 
-sed -i "" "s/#undef intgo/#undef intgo\n#cgo CFLAGS: -I\${SRCDIR}\/..\/liboqs\/build\/include\n#cgo LDFLAGS: -L\${SRCDIR}\/..\/liboqs\/build\/lib -loqs/" oqsgo/oqsgo.go
+sed -i "" "s/#cgo pkg-config: liboqs/#cgo CFLAGS: -I\${SRCDIR}\/..\/liboqs\/build\/include\n#cgo LDFLAGS: -L\${SRCDIR}\/..\/liboqs\/build\/lib -loqs/" oqsgo/oqsgo.go
 
-export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$script_dir/liboqs/build/lib"
+export DYLD_FALLBACK_LIBRARY_PATH="$DYLD_FALLBACK_LIBRARY_PATH:$script_dir/liboqs/build/lib"

@@ -75,7 +75,7 @@ int OQS_SIG_alg_is_enabled(const char *method_name);
     {
     public:
         OQS_SIG *sig_struct;
-        bool construct_success = true;
+        bool construct_success;
         std::string method_name;
         std::string alg_version;
         uint8_t claimed_nist_level;
@@ -84,7 +84,7 @@ int OQS_SIG_alg_is_enabled(const char *method_name);
         size_t length_private_key;
         size_t length_signature;
 
-        OQS_SIGNATURE(char *signature_name)
+        OQS_SIGNATURE(char *signature_name) : construct_success(true)
         {
             sig_struct = OQS_SIG_new(signature_name);
             if (sig_struct == NULL) {
@@ -145,7 +145,7 @@ int OQS_KEM_alg_is_enabled(const char *method_name);
     {
     public:
         OQS_KEM *kem_struct;
-        bool construct_success = true;
+        bool construct_success;
         std::string method_name;
         std::string alg_version;
         uint8_t claimed_nist_level;
@@ -155,7 +155,7 @@ int OQS_KEM_alg_is_enabled(const char *method_name);
         size_t length_ciphertext;
         size_t length_shared_secret;
 
-        OQS_KEYENCAPSULATION(char *kem_name)
+        OQS_KEYENCAPSULATION(char *kem_name) : construct_success(true)
         {
             kem_struct = OQS_KEM_new(kem_name);
             if (kem_struct == NULL) {
