@@ -22,35 +22,31 @@
  * SOFTWARE.
  */
 
-%module(directors = "1") oqsgo
-// %module oqsgo
+%module oqsgo
 %{
-#define SWIG_FILE_WITH_INIT
 #include "oqs/oqs.h"
 #include <string>
 %}
 
+%include <typemaps.i>
 %include<stdint.i>
 %include "oqs/oqs.h"
 %include "std_string.i"
-%include "std_vector.i"
 %include "cpointer.i"
-
-%pointer_class(size_t, size_t_p);
-
-%feature("director");
 
 // -------------------------------------------------------------------
 // OQS_randombytes
 
 %inline %{
-    std::string OQS_randombytes(size_t bytes_to_read){
-        std::string random_string;
-        random_string.resize(bytes_to_read);
-        OQS_randombytes((uint8_t*)random_string.data(), bytes_to_read);
+    char *OQS_randombytes(size_t bytes_to_read){
+        char *random_string;
+        OQS_randombytes((uint8_t*)random_string, bytes_to_read);
         return random_string;
     }
 %}
+
+%apply char *INOUT { char *public_key, char *private_key, char *signature, char *ciphertext, char *shared_secret };
+%apply size_t &INOUT { size_t &signature_len }
 
 // -------------------------------------------------------------------
 // OQS_randombytes_switch_algorithm
@@ -71,28 +67,35 @@ int OQS_SIG_alg_is_enabled(const char *method_name);
 // -------------------------------------------------------------------
 // OQS_SIGNATURE
 %inline %{
+    struct SIG_KEYPAIR_RESULT {
+        OQS_STATUS status;
+        uint8_t *public_key;
+        uint8_t *private_key;
+    };
+
     class OQS_SIGNATURE
     {
     public:
         OQS_SIG *sig_struct;
         bool construct_success;
-        std::string method_name;
-        std::string alg_version;
+        const char *method_name;
+        const char *alg_version;
         uint8_t claimed_nist_level;
         bool euf_cma;
         size_t length_public_key;
         size_t length_private_key;
         size_t length_signature;
 
-        OQS_SIGNATURE(char *signature_name) : construct_success(true)
+        OQS_SIGNATURE(char *signature_name)
         {
             sig_struct = OQS_SIG_new(signature_name);
             if (sig_struct == NULL) {
                 construct_success = false;
                 return;
             }
-            method_name = std::string(sig_struct->method_name);
-            alg_version = std::string(sig_struct->alg_version);
+            construct_success = true;
+            method_name = sig_struct->method_name;
+            alg_version = sig_struct->alg_version;
             claimed_nist_level = sig_struct->claimed_nist_level;
             euf_cma = sig_struct->euf_cma;
             length_public_key = sig_struct->length_public_key;
@@ -100,10 +103,8 @@ int OQS_SIG_alg_is_enabled(const char *method_name);
             length_signature = sig_struct->length_signature;
         }
 
-        ~OQS_SIGNATURE()
-        {
-            if (sig_struct != NULL)
-            {
+        ~OQS_SIGNATURE() {
+            if (sig_struct != NULL) {
                 OQS_SIG_free(sig_struct);
                 sig_struct = NULL;
             }
@@ -146,8 +147,8 @@ int OQS_KEM_alg_is_enabled(const char *method_name);
     public:
         OQS_KEM *kem_struct;
         bool construct_success;
-        std::string method_name;
-        std::string alg_version;
+        const char *method_name;
+        const char *alg_version;
         uint8_t claimed_nist_level;
         bool ind_cca;
         size_t length_public_key;
@@ -155,15 +156,16 @@ int OQS_KEM_alg_is_enabled(const char *method_name);
         size_t length_ciphertext;
         size_t length_shared_secret;
 
-        OQS_KEYENCAPSULATION(char *kem_name) : construct_success(true)
+        OQS_KEYENCAPSULATION(char *kem_name)
         {
             kem_struct = OQS_KEM_new(kem_name);
             if (kem_struct == NULL) {
                 construct_success = false;
                 return;
             }
-            method_name = std::string(kem_struct->method_name);
-            alg_version = std::string(kem_struct->alg_version);
+            construct_success = true;
+            method_name = kem_struct->method_name;
+            alg_version = kem_struct->alg_version;
             claimed_nist_level = kem_struct->claimed_nist_level;
             ind_cca = kem_struct->ind_cca;
             length_public_key = kem_struct->length_public_key;
@@ -172,10 +174,8 @@ int OQS_KEM_alg_is_enabled(const char *method_name);
             length_shared_secret = kem_struct->length_shared_secret;
         }
 
-        ~OQS_KEYENCAPSULATION()
-        {
-            if (kem_struct != NULL)
-            {
+        ~OQS_KEYENCAPSULATION() {
+            if (kem_struct != NULL) {
                 OQS_KEM_free(kem_struct);
                 kem_struct = NULL;
             }
