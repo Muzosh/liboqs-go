@@ -46,7 +46,6 @@
 %}
 
 %apply char *INOUT { char *public_key, char *private_key, char *signature, char *ciphertext, char *shared_secret };
-%apply size_t INOUT { size_t signature_len }
 
 // -------------------------------------------------------------------
 // OQS_randombytes_switch_algorithm

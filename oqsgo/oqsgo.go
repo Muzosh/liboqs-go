@@ -27,127 +27,127 @@ typedef struct { char *p; intgo n; } _gostring_;
 typedef struct { void* array; intgo len; intgo cap; } _goslice_;
 
 
-typedef long long swig_type_1;
+typedef _gostring_ swig_type_1;
 typedef long long swig_type_2;
 typedef _gostring_ swig_type_3;
-typedef long long swig_type_4;
-typedef _gostring_ swig_type_5;
+typedef _gostring_ swig_type_4;
+typedef long long swig_type_5;
 typedef _gostring_ swig_type_6;
-typedef long long swig_type_7;
+typedef _gostring_ swig_type_7;
 typedef _gostring_ swig_type_8;
 typedef _gostring_ swig_type_9;
 typedef _gostring_ swig_type_10;
-typedef _gostring_ swig_type_11;
-typedef _gostring_ swig_type_12;
+typedef long long swig_type_11;
+typedef long long swig_type_12;
 typedef long long swig_type_13;
 typedef long long swig_type_14;
 typedef long long swig_type_15;
 typedef long long swig_type_16;
-typedef long long swig_type_17;
-typedef long long swig_type_18;
-typedef _gostring_ swig_type_19;
-typedef _gostring_ swig_type_20;
+typedef _gostring_ swig_type_17;
+typedef _goslice_ swig_type_18;
+typedef _goslice_ swig_type_19;
+typedef _goslice_ swig_type_20;
 typedef _gostring_ swig_type_21;
-typedef _gostring_ swig_type_22;
-typedef _gostring_ swig_type_23;
-typedef long long swig_type_24;
-typedef _gostring_ swig_type_25;
-typedef _gostring_ swig_type_26;
+typedef long long swig_type_22;
+typedef _goslice_ swig_type_23;
+typedef _gostring_ swig_type_24;
+typedef long long swig_type_25;
+typedef _goslice_ swig_type_26;
 typedef long long swig_type_27;
-typedef _gostring_ swig_type_28;
-typedef long long swig_type_29;
-typedef _gostring_ swig_type_30;
+typedef _goslice_ swig_type_28;
+typedef _gostring_ swig_type_29;
+typedef long long swig_type_30;
 typedef _gostring_ swig_type_31;
-typedef long long swig_type_32;
+typedef _gostring_ swig_type_32;
 typedef _gostring_ swig_type_33;
 typedef _gostring_ swig_type_34;
 typedef _gostring_ swig_type_35;
-typedef _gostring_ swig_type_36;
-typedef _gostring_ swig_type_37;
+typedef long long swig_type_36;
+typedef long long swig_type_37;
 typedef long long swig_type_38;
 typedef long long swig_type_39;
 typedef long long swig_type_40;
 typedef long long swig_type_41;
 typedef long long swig_type_42;
 typedef long long swig_type_43;
-typedef long long swig_type_44;
-typedef long long swig_type_45;
-typedef _gostring_ swig_type_46;
-typedef _gostring_ swig_type_47;
-typedef _gostring_ swig_type_48;
-typedef _gostring_ swig_type_49;
-typedef _gostring_ swig_type_50;
-typedef _gostring_ swig_type_51;
-typedef _gostring_ swig_type_52;
-typedef _gostring_ swig_type_53;
-typedef _gostring_ swig_type_54;
-extern void _wrap_Swig_free_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern uintptr_t _wrap_Swig_malloc_oqsgo_4e8e82db66bc50ad(swig_intgo arg1);
-extern uintptr_t _wrap_new_size_t_p_oqsgo_4e8e82db66bc50ad(void);
-extern void _wrap_delete_size_t_p_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_size_t_p_assign_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_1 arg2);
-extern swig_type_2 _wrap_size_t_p_value_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern swig_voidp _wrap_size_t_p_cast_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern uintptr_t _wrap_size_t_p_frompointer_oqsgo_4e8e82db66bc50ad(swig_voidp arg1);
-extern swig_type_3 _wrap_OQS_randombytes_oqsgo_4e8e82db66bc50ad(swig_type_4 arg1);
-extern swig_intgo _wrap_OQS_randombytes_switch_algorithm_oqsgo_4e8e82db66bc50ad(swig_type_5 arg1);
-extern swig_type_6 _wrap_OQS_SIG_alg_identifier_oqsgo_4e8e82db66bc50ad(swig_type_7 arg1);
-extern swig_intgo _wrap_OQS_SIG_alg_count_oqsgo_4e8e82db66bc50ad(void);
-extern swig_intgo _wrap_OQS_SIG_alg_is_enabled_oqsgo_4e8e82db66bc50ad(swig_type_8 arg1);
-extern void _wrap_OQS_SIGNATURE_sig_struct_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_OQS_SIGNATURE_sig_struct_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_SIGNATURE_construct_success_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_OQS_SIGNATURE_construct_success_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_SIGNATURE_method_name_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_9 arg2);
-extern swig_type_10 _wrap_OQS_SIGNATURE_method_name_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_SIGNATURE_alg_version_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_11 arg2);
-extern swig_type_12 _wrap_OQS_SIGNATURE_alg_version_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_SIGNATURE_claimed_nist_level_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, char arg2);
-extern char _wrap_OQS_SIGNATURE_claimed_nist_level_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_SIGNATURE_euf_cma_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_OQS_SIGNATURE_euf_cma_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_SIGNATURE_length_public_key_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_13 arg2);
-extern swig_type_14 _wrap_OQS_SIGNATURE_length_public_key_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_SIGNATURE_length_private_key_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_15 arg2);
-extern swig_type_16 _wrap_OQS_SIGNATURE_length_private_key_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_SIGNATURE_length_signature_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_17 arg2);
-extern swig_type_18 _wrap_OQS_SIGNATURE_length_signature_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern uintptr_t _wrap_new_OQS_SIGNATURE_oqsgo_4e8e82db66bc50ad(swig_type_19 arg1);
-extern void _wrap_delete_OQS_SIGNATURE_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern swig_intgo _wrap_OQS_SIGNATURE_keypair_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_20 arg2, swig_type_21 arg3);
-extern swig_intgo _wrap_OQS_SIGNATURE_sign_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_22 arg2, swig_voidp arg3, swig_type_23 arg4, swig_type_24 arg5, swig_type_25 arg6);
-extern swig_intgo _wrap_OQS_SIGNATURE_verify_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_26 arg2, swig_type_27 arg3, swig_type_28 arg4, swig_type_29 arg5, swig_type_30 arg6);
-extern swig_type_31 _wrap_OQS_KEM_alg_identifier_oqsgo_4e8e82db66bc50ad(swig_type_32 arg1);
-extern swig_intgo _wrap_OQS_KEM_alg_count_oqsgo_4e8e82db66bc50ad(void);
-extern swig_intgo _wrap_OQS_KEM_alg_is_enabled_oqsgo_4e8e82db66bc50ad(swig_type_33 arg1);
-extern void _wrap_OQS_KEYENCAPSULATION_kem_struct_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_OQS_KEYENCAPSULATION_kem_struct_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_KEYENCAPSULATION_construct_success_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_OQS_KEYENCAPSULATION_construct_success_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_KEYENCAPSULATION_method_name_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_34 arg2);
-extern swig_type_35 _wrap_OQS_KEYENCAPSULATION_method_name_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_KEYENCAPSULATION_alg_version_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_36 arg2);
-extern swig_type_37 _wrap_OQS_KEYENCAPSULATION_alg_version_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_KEYENCAPSULATION_claimed_nist_level_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, char arg2);
-extern char _wrap_OQS_KEYENCAPSULATION_claimed_nist_level_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_KEYENCAPSULATION_ind_cca_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, _Bool arg2);
-extern _Bool _wrap_OQS_KEYENCAPSULATION_ind_cca_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_KEYENCAPSULATION_length_public_key_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_38 arg2);
-extern swig_type_39 _wrap_OQS_KEYENCAPSULATION_length_public_key_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_KEYENCAPSULATION_length_private_key_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_40 arg2);
-extern swig_type_41 _wrap_OQS_KEYENCAPSULATION_length_private_key_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_KEYENCAPSULATION_length_ciphertext_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_42 arg2);
-extern swig_type_43 _wrap_OQS_KEYENCAPSULATION_length_ciphertext_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern void _wrap_OQS_KEYENCAPSULATION_length_shared_secret_set_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_44 arg2);
-extern swig_type_45 _wrap_OQS_KEYENCAPSULATION_length_shared_secret_get_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern uintptr_t _wrap_new_OQS_KEYENCAPSULATION_oqsgo_4e8e82db66bc50ad(swig_type_46 arg1);
-extern void _wrap_delete_OQS_KEYENCAPSULATION_oqsgo_4e8e82db66bc50ad(uintptr_t arg1);
-extern swig_intgo _wrap_OQS_KEYENCAPSULATION_keypair_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_47 arg2, swig_type_48 arg3);
-extern swig_intgo _wrap_OQS_KEYENCAPSULATION_encapsulate_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_49 arg2, swig_type_50 arg3, swig_type_51 arg4);
-extern swig_intgo _wrap_OQS_KEYENCAPSULATION_decapsulate_oqsgo_4e8e82db66bc50ad(uintptr_t arg1, swig_type_52 arg2, swig_type_53 arg3, swig_type_54 arg4);
-extern swig_intgo _wrap_OQS_ERROR_oqsgo_4e8e82db66bc50ad(void);
-extern swig_intgo _wrap_OQS_SUCCESS_oqsgo_4e8e82db66bc50ad(void);
-extern swig_intgo _wrap_OQS_EXTERNAL_LIB_ERROR_OPENSSL_oqsgo_4e8e82db66bc50ad(void);
+typedef _gostring_ swig_type_44;
+typedef _goslice_ swig_type_45;
+typedef _goslice_ swig_type_46;
+typedef _goslice_ swig_type_47;
+typedef _goslice_ swig_type_48;
+typedef _goslice_ swig_type_49;
+typedef _goslice_ swig_type_50;
+typedef _goslice_ swig_type_51;
+typedef _goslice_ swig_type_52;
+extern void _wrap_Swig_free_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern uintptr_t _wrap_Swig_malloc_oqsgo_314eaa0e274a5d13(swig_intgo arg1);
+extern swig_type_1 _wrap_OQS_randombytes_oqsgo_314eaa0e274a5d13(swig_type_2 arg1);
+extern swig_intgo _wrap_OQS_randombytes_switch_algorithm_oqsgo_314eaa0e274a5d13(swig_type_3 arg1);
+extern swig_type_4 _wrap_OQS_SIG_alg_identifier_oqsgo_314eaa0e274a5d13(swig_type_5 arg1);
+extern swig_intgo _wrap_OQS_SIG_alg_count_oqsgo_314eaa0e274a5d13(void);
+extern swig_intgo _wrap_OQS_SIG_alg_is_enabled_oqsgo_314eaa0e274a5d13(swig_type_6 arg1);
+extern void _wrap_SIG_KEYPAIR_RESULT_status_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_SIG_KEYPAIR_RESULT_status_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_SIG_KEYPAIR_RESULT_public_key_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_voidp arg2);
+extern swig_voidp _wrap_SIG_KEYPAIR_RESULT_public_key_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_SIG_KEYPAIR_RESULT_private_key_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_voidp arg2);
+extern swig_voidp _wrap_SIG_KEYPAIR_RESULT_private_key_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern uintptr_t _wrap_new_SIG_KEYPAIR_RESULT_oqsgo_314eaa0e274a5d13(void);
+extern void _wrap_delete_SIG_KEYPAIR_RESULT_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_SIGNATURE_sig_struct_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_OQS_SIGNATURE_sig_struct_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_SIGNATURE_construct_success_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_OQS_SIGNATURE_construct_success_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_SIGNATURE_method_name_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_7 arg2);
+extern swig_type_8 _wrap_OQS_SIGNATURE_method_name_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_SIGNATURE_alg_version_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_9 arg2);
+extern swig_type_10 _wrap_OQS_SIGNATURE_alg_version_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_SIGNATURE_claimed_nist_level_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, char arg2);
+extern char _wrap_OQS_SIGNATURE_claimed_nist_level_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_SIGNATURE_euf_cma_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_OQS_SIGNATURE_euf_cma_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_SIGNATURE_length_public_key_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_11 arg2);
+extern swig_type_12 _wrap_OQS_SIGNATURE_length_public_key_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_SIGNATURE_length_private_key_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_13 arg2);
+extern swig_type_14 _wrap_OQS_SIGNATURE_length_private_key_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_SIGNATURE_length_signature_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_15 arg2);
+extern swig_type_16 _wrap_OQS_SIGNATURE_length_signature_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern uintptr_t _wrap_new_OQS_SIGNATURE_oqsgo_314eaa0e274a5d13(swig_type_17 arg1);
+extern void _wrap_delete_OQS_SIGNATURE_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern swig_intgo _wrap_OQS_SIGNATURE_keypair_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_18 arg2, swig_type_19 arg3);
+extern swig_intgo _wrap_OQS_SIGNATURE_sign_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_20 arg2, swig_voidp arg3, swig_type_21 arg4, swig_type_22 arg5, swig_type_23 arg6);
+extern swig_intgo _wrap_OQS_SIGNATURE_verify_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_24 arg2, swig_type_25 arg3, swig_type_26 arg4, swig_type_27 arg5, swig_type_28 arg6);
+extern swig_type_29 _wrap_OQS_KEM_alg_identifier_oqsgo_314eaa0e274a5d13(swig_type_30 arg1);
+extern swig_intgo _wrap_OQS_KEM_alg_count_oqsgo_314eaa0e274a5d13(void);
+extern swig_intgo _wrap_OQS_KEM_alg_is_enabled_oqsgo_314eaa0e274a5d13(swig_type_31 arg1);
+extern void _wrap_OQS_KEYENCAPSULATION_kem_struct_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_OQS_KEYENCAPSULATION_kem_struct_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_KEYENCAPSULATION_construct_success_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_OQS_KEYENCAPSULATION_construct_success_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_KEYENCAPSULATION_method_name_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_32 arg2);
+extern swig_type_33 _wrap_OQS_KEYENCAPSULATION_method_name_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_KEYENCAPSULATION_alg_version_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_34 arg2);
+extern swig_type_35 _wrap_OQS_KEYENCAPSULATION_alg_version_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_KEYENCAPSULATION_claimed_nist_level_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, char arg2);
+extern char _wrap_OQS_KEYENCAPSULATION_claimed_nist_level_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_KEYENCAPSULATION_ind_cca_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, _Bool arg2);
+extern _Bool _wrap_OQS_KEYENCAPSULATION_ind_cca_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_KEYENCAPSULATION_length_public_key_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_36 arg2);
+extern swig_type_37 _wrap_OQS_KEYENCAPSULATION_length_public_key_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_KEYENCAPSULATION_length_private_key_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_38 arg2);
+extern swig_type_39 _wrap_OQS_KEYENCAPSULATION_length_private_key_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_KEYENCAPSULATION_length_ciphertext_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_40 arg2);
+extern swig_type_41 _wrap_OQS_KEYENCAPSULATION_length_ciphertext_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern void _wrap_OQS_KEYENCAPSULATION_length_shared_secret_set_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_42 arg2);
+extern swig_type_43 _wrap_OQS_KEYENCAPSULATION_length_shared_secret_get_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern uintptr_t _wrap_new_OQS_KEYENCAPSULATION_oqsgo_314eaa0e274a5d13(swig_type_44 arg1);
+extern void _wrap_delete_OQS_KEYENCAPSULATION_oqsgo_314eaa0e274a5d13(uintptr_t arg1);
+extern swig_intgo _wrap_OQS_KEYENCAPSULATION_keypair_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_45 arg2, swig_type_46 arg3);
+extern swig_intgo _wrap_OQS_KEYENCAPSULATION_encapsulate_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_47 arg2, swig_type_48 arg3, swig_type_49 arg4);
+extern swig_intgo _wrap_OQS_KEYENCAPSULATION_decapsulate_oqsgo_314eaa0e274a5d13(uintptr_t arg1, swig_type_50 arg2, swig_type_51 arg3, swig_type_52 arg4);
+extern swig_intgo _wrap_OQS_ERROR_oqsgo_314eaa0e274a5d13(void);
+extern swig_intgo _wrap_OQS_SUCCESS_oqsgo_314eaa0e274a5d13(void);
+extern swig_intgo _wrap_OQS_EXTERNAL_LIB_ERROR_OPENSSL_oqsgo_314eaa0e274a5d13(void);
 #undef intgo
 */
 import "C"
@@ -179,6 +179,17 @@ func getSwigcptr(v interface { Swigcptr() uintptr }) uintptr {
 
 type _ sync.Mutex
 
+//export cgo_panic__oqsgo_314eaa0e274a5d13
+func cgo_panic__oqsgo_314eaa0e274a5d13(p *byte) {
+	s := (*[1024]byte)(unsafe.Pointer(p))[:]
+	for i, b := range s {
+		if b == 0 {
+			panic(string(s[:i]))
+		}
+	}
+	panic(string(s))
+}
+
 
 type swig_gostring struct { p uintptr; n int }
 func swigCopyString(s string) string {
@@ -190,75 +201,20 @@ func swigCopyString(s string) string {
 
 func Swig_free(arg1 uintptr) {
 	_swig_i_0 := arg1
-	C._wrap_Swig_free_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
+	C._wrap_Swig_free_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0))
 }
 
 func Swig_malloc(arg1 int) (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
-	swig_r = (uintptr)(C._wrap_Swig_malloc_oqsgo_4e8e82db66bc50ad(C.swig_intgo(_swig_i_0)))
+	swig_r = (uintptr)(C._wrap_Swig_malloc_oqsgo_314eaa0e274a5d13(C.swig_intgo(_swig_i_0)))
 	return swig_r
-}
-
-type SwigcptrSize_t_p uintptr
-
-func (p SwigcptrSize_t_p) Swigcptr() uintptr {
-	return (uintptr)(p)
-}
-
-func (p SwigcptrSize_t_p) SwigIsSize_t_p() {
-}
-
-func NewSize_t_p() (_swig_ret Size_t_p) {
-	var swig_r Size_t_p
-	swig_r = (Size_t_p)(SwigcptrSize_t_p(C._wrap_new_size_t_p_oqsgo_4e8e82db66bc50ad()))
-	return swig_r
-}
-
-func DeleteSize_t_p(arg1 Size_t_p) {
-	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_size_t_p_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
-}
-
-func (arg1 SwigcptrSize_t_p) Assign(arg2 int64) {
-	_swig_i_0 := arg1
-	_swig_i_1 := arg2
-	C._wrap_size_t_p_assign_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.swig_type_1(_swig_i_1))
-}
-
-func (arg1 SwigcptrSize_t_p) Value() (_swig_ret int64) {
-	var swig_r int64
-	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_size_t_p_value_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
-	return swig_r
-}
-
-func (arg1 SwigcptrSize_t_p) Cast() (_swig_ret *int64) {
-	var swig_r *int64
-	_swig_i_0 := arg1
-	swig_r = (*int64)(C._wrap_size_t_p_cast_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
-	return swig_r
-}
-
-func Size_t_pFrompointer(arg1 *int64) (_swig_ret Size_t_p) {
-	var swig_r Size_t_p
-	_swig_i_0 := arg1
-	swig_r = (Size_t_p)(SwigcptrSize_t_p(C._wrap_size_t_p_frompointer_oqsgo_4e8e82db66bc50ad(C.swig_voidp(_swig_i_0))))
-	return swig_r
-}
-
-type Size_t_p interface {
-	Swigcptr() uintptr
-	SwigIsSize_t_p()
-	Assign(arg2 int64)
-	Value() (_swig_ret int64)
-	Cast() (_swig_ret *int64)
 }
 
 func OQS_randombytes(arg1 int64) (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_OQS_randombytes_oqsgo_4e8e82db66bc50ad(C.swig_type_4(_swig_i_0))
+	swig_r_p := C._wrap_OQS_randombytes_oqsgo_314eaa0e274a5d13(C.swig_type_2(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -268,7 +224,7 @@ func OQS_randombytes(arg1 int64) (_swig_ret string) {
 func OQS_randombytes_switch_algorithm(arg1 string) (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
 	_swig_i_0 := arg1
-	swig_r = (OQS_STATUS)(C._wrap_OQS_randombytes_switch_algorithm_oqsgo_4e8e82db66bc50ad(*(*C.swig_type_5)(unsafe.Pointer(&_swig_i_0))))
+	swig_r = (OQS_STATUS)(C._wrap_OQS_randombytes_switch_algorithm_oqsgo_314eaa0e274a5d13(*(*C.swig_type_3)(unsafe.Pointer(&_swig_i_0))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -278,7 +234,7 @@ func OQS_randombytes_switch_algorithm(arg1 string) (_swig_ret OQS_STATUS) {
 func OQS_SIG_alg_identifier(arg1 int64) (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_OQS_SIG_alg_identifier_oqsgo_4e8e82db66bc50ad(C.swig_type_7(_swig_i_0))
+	swig_r_p := C._wrap_OQS_SIG_alg_identifier_oqsgo_314eaa0e274a5d13(C.swig_type_5(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -287,18 +243,88 @@ func OQS_SIG_alg_identifier(arg1 int64) (_swig_ret string) {
 
 func OQS_SIG_alg_count() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_OQS_SIG_alg_count_oqsgo_4e8e82db66bc50ad())
+	swig_r = (int)(C._wrap_OQS_SIG_alg_count_oqsgo_314eaa0e274a5d13())
 	return swig_r
 }
 
 func OQS_SIG_alg_is_enabled(arg1 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_OQS_SIG_alg_is_enabled_oqsgo_4e8e82db66bc50ad(*(*C.swig_type_8)(unsafe.Pointer(&_swig_i_0))))
+	swig_r = (int)(C._wrap_OQS_SIG_alg_is_enabled_oqsgo_314eaa0e274a5d13(*(*C.swig_type_6)(unsafe.Pointer(&_swig_i_0))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
 	return swig_r
+}
+
+type SwigcptrSIG_KEYPAIR_RESULT uintptr
+
+func (p SwigcptrSIG_KEYPAIR_RESULT) Swigcptr() uintptr {
+	return (uintptr)(p)
+}
+
+func (p SwigcptrSIG_KEYPAIR_RESULT) SwigIsSIG_KEYPAIR_RESULT() {
+}
+
+func (arg1 SwigcptrSIG_KEYPAIR_RESULT) SetStatus(arg2 OQS_STATUS) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	C._wrap_SIG_KEYPAIR_RESULT_status_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+}
+
+func (arg1 SwigcptrSIG_KEYPAIR_RESULT) GetStatus() (_swig_ret OQS_STATUS) {
+	var swig_r OQS_STATUS
+	_swig_i_0 := arg1
+	swig_r = (OQS_STATUS)(C._wrap_SIG_KEYPAIR_RESULT_status_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrSIG_KEYPAIR_RESULT) SetPublic_key(arg2 *byte) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	C._wrap_SIG_KEYPAIR_RESULT_public_key_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+}
+
+func (arg1 SwigcptrSIG_KEYPAIR_RESULT) GetPublic_key() (_swig_ret *byte) {
+	var swig_r *byte
+	_swig_i_0 := arg1
+	swig_r = (*byte)(C._wrap_SIG_KEYPAIR_RESULT_public_key_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrSIG_KEYPAIR_RESULT) SetPrivate_key(arg2 *byte) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	C._wrap_SIG_KEYPAIR_RESULT_private_key_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+}
+
+func (arg1 SwigcptrSIG_KEYPAIR_RESULT) GetPrivate_key() (_swig_ret *byte) {
+	var swig_r *byte
+	_swig_i_0 := arg1
+	swig_r = (*byte)(C._wrap_SIG_KEYPAIR_RESULT_private_key_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func NewSIG_KEYPAIR_RESULT() (_swig_ret SIG_KEYPAIR_RESULT) {
+	var swig_r SIG_KEYPAIR_RESULT
+	swig_r = (SIG_KEYPAIR_RESULT)(SwigcptrSIG_KEYPAIR_RESULT(C._wrap_new_SIG_KEYPAIR_RESULT_oqsgo_314eaa0e274a5d13()))
+	return swig_r
+}
+
+func DeleteSIG_KEYPAIR_RESULT(arg1 SIG_KEYPAIR_RESULT) {
+	_swig_i_0 := getSwigcptr(arg1)
+	C._wrap_delete_SIG_KEYPAIR_RESULT_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0))
+}
+
+type SIG_KEYPAIR_RESULT interface {
+	Swigcptr() uintptr
+	SwigIsSIG_KEYPAIR_RESULT()
+	SetStatus(arg2 OQS_STATUS)
+	GetStatus() (_swig_ret OQS_STATUS)
+	SetPublic_key(arg2 *byte)
+	GetPublic_key() (_swig_ret *byte)
+	SetPrivate_key(arg2 *byte)
+	GetPrivate_key() (_swig_ret *byte)
 }
 
 type SwigcptrOQS_SIGNATURE uintptr
@@ -310,40 +336,36 @@ func (p SwigcptrOQS_SIGNATURE) Swigcptr() uintptr {
 func (p SwigcptrOQS_SIGNATURE) SwigIsOQS_SIGNATURE() {
 }
 
-func (p SwigcptrOQS_SIGNATURE) DirectorInterface() interface{} {
-	return nil
-}
-
 func (arg1 SwigcptrOQS_SIGNATURE) SetSig_struct(arg2 OQS_SIG) {
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
-	C._wrap_OQS_SIGNATURE_sig_struct_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_OQS_SIGNATURE_sig_struct_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) GetSig_struct() (_swig_ret OQS_SIG) {
 	var swig_r OQS_SIG
 	_swig_i_0 := arg1
-	swig_r = (OQS_SIG)(SwigcptrOQS_SIG(C._wrap_OQS_SIGNATURE_sig_struct_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))))
+	swig_r = (OQS_SIG)(SwigcptrOQS_SIG(C._wrap_OQS_SIGNATURE_sig_struct_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) SetConstruct_success(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_SIGNATURE_construct_success_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_OQS_SIGNATURE_construct_success_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) GetConstruct_success() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_OQS_SIGNATURE_construct_success_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_OQS_SIGNATURE_construct_success_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) SetMethod_name(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_SIGNATURE_method_name_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), *(*C.swig_type_9)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_OQS_SIGNATURE_method_name_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), *(*C.swig_type_7)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -352,7 +374,7 @@ func (arg1 SwigcptrOQS_SIGNATURE) SetMethod_name(arg2 string) {
 func (arg1 SwigcptrOQS_SIGNATURE) GetMethod_name() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_OQS_SIGNATURE_method_name_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_OQS_SIGNATURE_method_name_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -362,7 +384,7 @@ func (arg1 SwigcptrOQS_SIGNATURE) GetMethod_name() (_swig_ret string) {
 func (arg1 SwigcptrOQS_SIGNATURE) SetAlg_version(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_SIGNATURE_alg_version_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), *(*C.swig_type_11)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_OQS_SIGNATURE_alg_version_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), *(*C.swig_type_9)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -371,7 +393,7 @@ func (arg1 SwigcptrOQS_SIGNATURE) SetAlg_version(arg2 string) {
 func (arg1 SwigcptrOQS_SIGNATURE) GetAlg_version() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_OQS_SIGNATURE_alg_version_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_OQS_SIGNATURE_alg_version_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -381,72 +403,72 @@ func (arg1 SwigcptrOQS_SIGNATURE) GetAlg_version() (_swig_ret string) {
 func (arg1 SwigcptrOQS_SIGNATURE) SetClaimed_nist_level(arg2 byte) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_SIGNATURE_claimed_nist_level_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.char(_swig_i_1))
+	C._wrap_OQS_SIGNATURE_claimed_nist_level_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.char(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) GetClaimed_nist_level() (_swig_ret byte) {
 	var swig_r byte
 	_swig_i_0 := arg1
-	swig_r = (byte)(C._wrap_OQS_SIGNATURE_claimed_nist_level_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (byte)(C._wrap_OQS_SIGNATURE_claimed_nist_level_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) SetEuf_cma(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_SIGNATURE_euf_cma_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_OQS_SIGNATURE_euf_cma_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) GetEuf_cma() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_OQS_SIGNATURE_euf_cma_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_OQS_SIGNATURE_euf_cma_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) SetLength_public_key(arg2 int64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_SIGNATURE_length_public_key_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.swig_type_13(_swig_i_1))
+	C._wrap_OQS_SIGNATURE_length_public_key_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.swig_type_11(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) GetLength_public_key() (_swig_ret int64) {
 	var swig_r int64
 	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_OQS_SIGNATURE_length_public_key_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (int64)(C._wrap_OQS_SIGNATURE_length_public_key_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) SetLength_private_key(arg2 int64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_SIGNATURE_length_private_key_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.swig_type_15(_swig_i_1))
+	C._wrap_OQS_SIGNATURE_length_private_key_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.swig_type_13(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) GetLength_private_key() (_swig_ret int64) {
 	var swig_r int64
 	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_OQS_SIGNATURE_length_private_key_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (int64)(C._wrap_OQS_SIGNATURE_length_private_key_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) SetLength_signature(arg2 int64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_SIGNATURE_length_signature_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.swig_type_17(_swig_i_1))
+	C._wrap_OQS_SIGNATURE_length_signature_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.swig_type_15(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_SIGNATURE) GetLength_signature() (_swig_ret int64) {
 	var swig_r int64
 	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_OQS_SIGNATURE_length_signature_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (int64)(C._wrap_OQS_SIGNATURE_length_signature_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewOQS_SIGNATURE(arg1 string) (_swig_ret OQS_SIGNATURE) {
 	var swig_r OQS_SIGNATURE
 	_swig_i_0 := arg1
-	swig_r = (OQS_SIGNATURE)(SwigcptrOQS_SIGNATURE(C._wrap_new_OQS_SIGNATURE_oqsgo_4e8e82db66bc50ad(*(*C.swig_type_19)(unsafe.Pointer(&_swig_i_0)))))
+	swig_r = (OQS_SIGNATURE)(SwigcptrOQS_SIGNATURE(C._wrap_new_OQS_SIGNATURE_oqsgo_314eaa0e274a5d13(*(*C.swig_type_17)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -455,15 +477,15 @@ func NewOQS_SIGNATURE(arg1 string) (_swig_ret OQS_SIGNATURE) {
 
 func DeleteOQS_SIGNATURE(arg1 OQS_SIGNATURE) {
 	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_OQS_SIGNATURE_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_OQS_SIGNATURE_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0))
 }
 
-func (arg1 SwigcptrOQS_SIGNATURE) Keypair(arg2 string, arg3 string) (_swig_ret OQS_STATUS) {
+func (arg1 SwigcptrOQS_SIGNATURE) Keypair(arg2 []byte, arg3 []byte) (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (OQS_STATUS)(C._wrap_OQS_SIGNATURE_keypair_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), *(*C.swig_type_20)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_21)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (OQS_STATUS)(C._wrap_OQS_SIGNATURE_keypair_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), *(*C.swig_type_18)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_19)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -473,7 +495,7 @@ func (arg1 SwigcptrOQS_SIGNATURE) Keypair(arg2 string, arg3 string) (_swig_ret O
 	return swig_r
 }
 
-func (arg1 SwigcptrOQS_SIGNATURE) Sign(arg2 string, arg3 *int64, arg4 string, arg5 int64, arg6 string) (_swig_ret OQS_STATUS) {
+func (arg1 SwigcptrOQS_SIGNATURE) Sign(arg2 []byte, arg3 *int64, arg4 string, arg5 int64, arg6 []byte) (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -481,7 +503,7 @@ func (arg1 SwigcptrOQS_SIGNATURE) Sign(arg2 string, arg3 *int64, arg4 string, ar
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (OQS_STATUS)(C._wrap_OQS_SIGNATURE_sign_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), *(*C.swig_type_22)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), *(*C.swig_type_23)(unsafe.Pointer(&_swig_i_3)), C.swig_type_24(_swig_i_4), *(*C.swig_type_25)(unsafe.Pointer(&_swig_i_5))))
+	swig_r = (OQS_STATUS)(C._wrap_OQS_SIGNATURE_sign_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), *(*C.swig_type_20)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), *(*C.swig_type_21)(unsafe.Pointer(&_swig_i_3)), C.swig_type_22(_swig_i_4), *(*C.swig_type_23)(unsafe.Pointer(&_swig_i_5))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -494,7 +516,7 @@ func (arg1 SwigcptrOQS_SIGNATURE) Sign(arg2 string, arg3 *int64, arg4 string, ar
 	return swig_r
 }
 
-func (arg1 SwigcptrOQS_SIGNATURE) Verify(arg2 string, arg3 int64, arg4 string, arg5 int64, arg6 string) (_swig_ret OQS_STATUS) {
+func (arg1 SwigcptrOQS_SIGNATURE) Verify(arg2 string, arg3 int64, arg4 []byte, arg5 int64, arg6 []byte) (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -502,7 +524,7 @@ func (arg1 SwigcptrOQS_SIGNATURE) Verify(arg2 string, arg3 int64, arg4 string, a
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (OQS_STATUS)(C._wrap_OQS_SIGNATURE_verify_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), *(*C.swig_type_26)(unsafe.Pointer(&_swig_i_1)), C.swig_type_27(_swig_i_2), *(*C.swig_type_28)(unsafe.Pointer(&_swig_i_3)), C.swig_type_29(_swig_i_4), *(*C.swig_type_30)(unsafe.Pointer(&_swig_i_5))))
+	swig_r = (OQS_STATUS)(C._wrap_OQS_SIGNATURE_verify_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), *(*C.swig_type_24)(unsafe.Pointer(&_swig_i_1)), C.swig_type_25(_swig_i_2), *(*C.swig_type_26)(unsafe.Pointer(&_swig_i_3)), C.swig_type_27(_swig_i_4), *(*C.swig_type_28)(unsafe.Pointer(&_swig_i_5))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -518,7 +540,6 @@ func (arg1 SwigcptrOQS_SIGNATURE) Verify(arg2 string, arg3 int64, arg4 string, a
 type OQS_SIGNATURE interface {
 	Swigcptr() uintptr
 	SwigIsOQS_SIGNATURE()
-	DirectorInterface() interface{}
 	SetSig_struct(arg2 OQS_SIG)
 	GetSig_struct() (_swig_ret OQS_SIG)
 	SetConstruct_success(arg2 bool)
@@ -537,15 +558,15 @@ type OQS_SIGNATURE interface {
 	GetLength_private_key() (_swig_ret int64)
 	SetLength_signature(arg2 int64)
 	GetLength_signature() (_swig_ret int64)
-	Keypair(arg2 string, arg3 string) (_swig_ret OQS_STATUS)
-	Sign(arg2 string, arg3 *int64, arg4 string, arg5 int64, arg6 string) (_swig_ret OQS_STATUS)
-	Verify(arg2 string, arg3 int64, arg4 string, arg5 int64, arg6 string) (_swig_ret OQS_STATUS)
+	Keypair(arg2 []byte, arg3 []byte) (_swig_ret OQS_STATUS)
+	Sign(arg2 []byte, arg3 *int64, arg4 string, arg5 int64, arg6 []byte) (_swig_ret OQS_STATUS)
+	Verify(arg2 string, arg3 int64, arg4 []byte, arg5 int64, arg6 []byte) (_swig_ret OQS_STATUS)
 }
 
 func OQS_KEM_alg_identifier(arg1 int64) (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_OQS_KEM_alg_identifier_oqsgo_4e8e82db66bc50ad(C.swig_type_32(_swig_i_0))
+	swig_r_p := C._wrap_OQS_KEM_alg_identifier_oqsgo_314eaa0e274a5d13(C.swig_type_30(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -554,14 +575,14 @@ func OQS_KEM_alg_identifier(arg1 int64) (_swig_ret string) {
 
 func OQS_KEM_alg_count() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_OQS_KEM_alg_count_oqsgo_4e8e82db66bc50ad())
+	swig_r = (int)(C._wrap_OQS_KEM_alg_count_oqsgo_314eaa0e274a5d13())
 	return swig_r
 }
 
 func OQS_KEM_alg_is_enabled(arg1 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_OQS_KEM_alg_is_enabled_oqsgo_4e8e82db66bc50ad(*(*C.swig_type_33)(unsafe.Pointer(&_swig_i_0))))
+	swig_r = (int)(C._wrap_OQS_KEM_alg_is_enabled_oqsgo_314eaa0e274a5d13(*(*C.swig_type_31)(unsafe.Pointer(&_swig_i_0))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -577,40 +598,36 @@ func (p SwigcptrOQS_KEYENCAPSULATION) Swigcptr() uintptr {
 func (p SwigcptrOQS_KEYENCAPSULATION) SwigIsOQS_KEYENCAPSULATION() {
 }
 
-func (p SwigcptrOQS_KEYENCAPSULATION) DirectorInterface() interface{} {
-	return nil
-}
-
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetKem_struct(arg2 OQS_KEM) {
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
-	C._wrap_OQS_KEYENCAPSULATION_kem_struct_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_OQS_KEYENCAPSULATION_kem_struct_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetKem_struct() (_swig_ret OQS_KEM) {
 	var swig_r OQS_KEM
 	_swig_i_0 := arg1
-	swig_r = (OQS_KEM)(SwigcptrOQS_KEM(C._wrap_OQS_KEYENCAPSULATION_kem_struct_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))))
+	swig_r = (OQS_KEM)(SwigcptrOQS_KEM(C._wrap_OQS_KEYENCAPSULATION_kem_struct_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetConstruct_success(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_KEYENCAPSULATION_construct_success_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_OQS_KEYENCAPSULATION_construct_success_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetConstruct_success() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_OQS_KEYENCAPSULATION_construct_success_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_OQS_KEYENCAPSULATION_construct_success_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetMethod_name(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_KEYENCAPSULATION_method_name_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), *(*C.swig_type_34)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_OQS_KEYENCAPSULATION_method_name_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), *(*C.swig_type_32)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -619,7 +636,7 @@ func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetMethod_name(arg2 string) {
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetMethod_name() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_OQS_KEYENCAPSULATION_method_name_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_OQS_KEYENCAPSULATION_method_name_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -629,7 +646,7 @@ func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetMethod_name() (_swig_ret string) {
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetAlg_version(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_KEYENCAPSULATION_alg_version_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), *(*C.swig_type_36)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_OQS_KEYENCAPSULATION_alg_version_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), *(*C.swig_type_34)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -638,7 +655,7 @@ func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetAlg_version(arg2 string) {
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetAlg_version() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_OQS_KEYENCAPSULATION_alg_version_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_OQS_KEYENCAPSULATION_alg_version_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -648,85 +665,85 @@ func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetAlg_version() (_swig_ret string) {
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetClaimed_nist_level(arg2 byte) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_KEYENCAPSULATION_claimed_nist_level_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.char(_swig_i_1))
+	C._wrap_OQS_KEYENCAPSULATION_claimed_nist_level_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.char(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetClaimed_nist_level() (_swig_ret byte) {
 	var swig_r byte
 	_swig_i_0 := arg1
-	swig_r = (byte)(C._wrap_OQS_KEYENCAPSULATION_claimed_nist_level_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (byte)(C._wrap_OQS_KEYENCAPSULATION_claimed_nist_level_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetInd_cca(arg2 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_KEYENCAPSULATION_ind_cca_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
+	C._wrap_OQS_KEYENCAPSULATION_ind_cca_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetInd_cca() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_OQS_KEYENCAPSULATION_ind_cca_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_OQS_KEYENCAPSULATION_ind_cca_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetLength_public_key(arg2 int64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_KEYENCAPSULATION_length_public_key_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.swig_type_38(_swig_i_1))
+	C._wrap_OQS_KEYENCAPSULATION_length_public_key_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.swig_type_36(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetLength_public_key() (_swig_ret int64) {
 	var swig_r int64
 	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_OQS_KEYENCAPSULATION_length_public_key_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (int64)(C._wrap_OQS_KEYENCAPSULATION_length_public_key_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetLength_private_key(arg2 int64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_KEYENCAPSULATION_length_private_key_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.swig_type_40(_swig_i_1))
+	C._wrap_OQS_KEYENCAPSULATION_length_private_key_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.swig_type_38(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetLength_private_key() (_swig_ret int64) {
 	var swig_r int64
 	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_OQS_KEYENCAPSULATION_length_private_key_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (int64)(C._wrap_OQS_KEYENCAPSULATION_length_private_key_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetLength_ciphertext(arg2 int64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_KEYENCAPSULATION_length_ciphertext_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.swig_type_42(_swig_i_1))
+	C._wrap_OQS_KEYENCAPSULATION_length_ciphertext_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.swig_type_40(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetLength_ciphertext() (_swig_ret int64) {
 	var swig_r int64
 	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_OQS_KEYENCAPSULATION_length_ciphertext_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (int64)(C._wrap_OQS_KEYENCAPSULATION_length_ciphertext_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) SetLength_shared_secret(arg2 int64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_OQS_KEYENCAPSULATION_length_shared_secret_set_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), C.swig_type_44(_swig_i_1))
+	C._wrap_OQS_KEYENCAPSULATION_length_shared_secret_set_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), C.swig_type_42(_swig_i_1))
 }
 
 func (arg1 SwigcptrOQS_KEYENCAPSULATION) GetLength_shared_secret() (_swig_ret int64) {
 	var swig_r int64
 	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_OQS_KEYENCAPSULATION_length_shared_secret_get_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0)))
+	swig_r = (int64)(C._wrap_OQS_KEYENCAPSULATION_length_shared_secret_get_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func NewOQS_KEYENCAPSULATION(arg1 string) (_swig_ret OQS_KEYENCAPSULATION) {
 	var swig_r OQS_KEYENCAPSULATION
 	_swig_i_0 := arg1
-	swig_r = (OQS_KEYENCAPSULATION)(SwigcptrOQS_KEYENCAPSULATION(C._wrap_new_OQS_KEYENCAPSULATION_oqsgo_4e8e82db66bc50ad(*(*C.swig_type_46)(unsafe.Pointer(&_swig_i_0)))))
+	swig_r = (OQS_KEYENCAPSULATION)(SwigcptrOQS_KEYENCAPSULATION(C._wrap_new_OQS_KEYENCAPSULATION_oqsgo_314eaa0e274a5d13(*(*C.swig_type_44)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -735,15 +752,15 @@ func NewOQS_KEYENCAPSULATION(arg1 string) (_swig_ret OQS_KEYENCAPSULATION) {
 
 func DeleteOQS_KEYENCAPSULATION(arg1 OQS_KEYENCAPSULATION) {
 	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_OQS_KEYENCAPSULATION_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_OQS_KEYENCAPSULATION_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0))
 }
 
-func (arg1 SwigcptrOQS_KEYENCAPSULATION) Keypair(arg2 string, arg3 string) (_swig_ret OQS_STATUS) {
+func (arg1 SwigcptrOQS_KEYENCAPSULATION) Keypair(arg2 []byte, arg3 []byte) (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (OQS_STATUS)(C._wrap_OQS_KEYENCAPSULATION_keypair_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), *(*C.swig_type_47)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_48)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (OQS_STATUS)(C._wrap_OQS_KEYENCAPSULATION_keypair_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), *(*C.swig_type_45)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_46)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -753,13 +770,13 @@ func (arg1 SwigcptrOQS_KEYENCAPSULATION) Keypair(arg2 string, arg3 string) (_swi
 	return swig_r
 }
 
-func (arg1 SwigcptrOQS_KEYENCAPSULATION) Encapsulate(arg2 string, arg3 string, arg4 string) (_swig_ret OQS_STATUS) {
+func (arg1 SwigcptrOQS_KEYENCAPSULATION) Encapsulate(arg2 []byte, arg3 []byte, arg4 []byte) (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (OQS_STATUS)(C._wrap_OQS_KEYENCAPSULATION_encapsulate_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), *(*C.swig_type_49)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_50)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_51)(unsafe.Pointer(&_swig_i_3))))
+	swig_r = (OQS_STATUS)(C._wrap_OQS_KEYENCAPSULATION_encapsulate_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), *(*C.swig_type_47)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_48)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_49)(unsafe.Pointer(&_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -772,13 +789,13 @@ func (arg1 SwigcptrOQS_KEYENCAPSULATION) Encapsulate(arg2 string, arg3 string, a
 	return swig_r
 }
 
-func (arg1 SwigcptrOQS_KEYENCAPSULATION) Decapsulate(arg2 string, arg3 string, arg4 string) (_swig_ret OQS_STATUS) {
+func (arg1 SwigcptrOQS_KEYENCAPSULATION) Decapsulate(arg2 []byte, arg3 []byte, arg4 []byte) (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (OQS_STATUS)(C._wrap_OQS_KEYENCAPSULATION_decapsulate_oqsgo_4e8e82db66bc50ad(C.uintptr_t(_swig_i_0), *(*C.swig_type_52)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_53)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_54)(unsafe.Pointer(&_swig_i_3))))
+	swig_r = (OQS_STATUS)(C._wrap_OQS_KEYENCAPSULATION_decapsulate_oqsgo_314eaa0e274a5d13(C.uintptr_t(_swig_i_0), *(*C.swig_type_50)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_51)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_52)(unsafe.Pointer(&_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -794,7 +811,6 @@ func (arg1 SwigcptrOQS_KEYENCAPSULATION) Decapsulate(arg2 string, arg3 string, a
 type OQS_KEYENCAPSULATION interface {
 	Swigcptr() uintptr
 	SwigIsOQS_KEYENCAPSULATION()
-	DirectorInterface() interface{}
 	SetKem_struct(arg2 OQS_KEM)
 	GetKem_struct() (_swig_ret OQS_KEM)
 	SetConstruct_success(arg2 bool)
@@ -815,29 +831,29 @@ type OQS_KEYENCAPSULATION interface {
 	GetLength_ciphertext() (_swig_ret int64)
 	SetLength_shared_secret(arg2 int64)
 	GetLength_shared_secret() (_swig_ret int64)
-	Keypair(arg2 string, arg3 string) (_swig_ret OQS_STATUS)
-	Encapsulate(arg2 string, arg3 string, arg4 string) (_swig_ret OQS_STATUS)
-	Decapsulate(arg2 string, arg3 string, arg4 string) (_swig_ret OQS_STATUS)
+	Keypair(arg2 []byte, arg3 []byte) (_swig_ret OQS_STATUS)
+	Encapsulate(arg2 []byte, arg3 []byte, arg4 []byte) (_swig_ret OQS_STATUS)
+	Decapsulate(arg2 []byte, arg3 []byte, arg4 []byte) (_swig_ret OQS_STATUS)
 }
 
 type OQS_STATUS int
 func _swig_getOQS_ERROR() (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
-	swig_r = (OQS_STATUS)(C._wrap_OQS_ERROR_oqsgo_4e8e82db66bc50ad())
+	swig_r = (OQS_STATUS)(C._wrap_OQS_ERROR_oqsgo_314eaa0e274a5d13())
 	return swig_r
 }
 
 var OQS_ERROR OQS_STATUS = _swig_getOQS_ERROR()
 func _swig_getOQS_SUCCESS() (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
-	swig_r = (OQS_STATUS)(C._wrap_OQS_SUCCESS_oqsgo_4e8e82db66bc50ad())
+	swig_r = (OQS_STATUS)(C._wrap_OQS_SUCCESS_oqsgo_314eaa0e274a5d13())
 	return swig_r
 }
 
 var OQS_SUCCESS OQS_STATUS = _swig_getOQS_SUCCESS()
 func _swig_getOQS_EXTERNAL_LIB_ERROR_OPENSSL() (_swig_ret OQS_STATUS) {
 	var swig_r OQS_STATUS
-	swig_r = (OQS_STATUS)(C._wrap_OQS_EXTERNAL_LIB_ERROR_OPENSSL_oqsgo_4e8e82db66bc50ad())
+	swig_r = (OQS_STATUS)(C._wrap_OQS_EXTERNAL_LIB_ERROR_OPENSSL_oqsgo_314eaa0e274a5d13())
 	return swig_r
 }
 
@@ -936,48 +952,4 @@ type OQS_SIG interface {
 func (p SwigcptrOQS_SIG) Swigcptr() uintptr {
 	return uintptr(p)
 }
-
-
-
-var swigDirectorTrack struct {
-	sync.Mutex
-	m map[int]interface{}
-	c int
-}
-
-func swigDirectorAdd(v interface{}) int {
-	swigDirectorTrack.Lock()
-	defer swigDirectorTrack.Unlock()
-	if swigDirectorTrack.m == nil {
-		swigDirectorTrack.m = make(map[int]interface{})
-	}
-	swigDirectorTrack.c++
-	ret := swigDirectorTrack.c
-	swigDirectorTrack.m[ret] = v
-	return ret
-}
-
-func swigDirectorLookup(c int) interface{} {
-	swigDirectorTrack.Lock()
-	defer swigDirectorTrack.Unlock()
-	ret := swigDirectorTrack.m[c]
-	if ret == nil {
-		panic("C++ director pointer not found (possible	use-after-free)")
-	}
-	return ret
-}
-
-func swigDirectorDelete(c int) {
-	swigDirectorTrack.Lock()
-	defer swigDirectorTrack.Unlock()
-	if swigDirectorTrack.m[c] == nil {
-		if c > swigDirectorTrack.c {
-			panic("C++ director pointer invalid (possible memory corruption")
-		} else {
-			panic("C++ director pointer not found (possible use-after-free)")
-		}
-	}
-	delete(swigDirectorTrack.m, c)
-}
-
 

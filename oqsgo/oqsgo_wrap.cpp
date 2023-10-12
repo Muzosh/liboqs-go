@@ -9,11 +9,20 @@
 // source: oqsgo.i
 
 
+extern
+#ifdef __cplusplus
+  "C"
+#endif
+  void cgo_panic__oqsgo_314eaa0e274a5d13(const char*);
+static void _swig_gopanic(const char *p) {
+  cgo_panic__oqsgo_314eaa0e274a5d13(p);
+}
+
+
 
 #define SWIG_VERSION 0x040101
 #define SWIGGO
 #define SWIGMODULE oqsgo
-#define SWIG_DIRECTORS
 /* -----------------------------------------------------------------------------
  *  This section contains generic SWIG labels for method/variable
  *  declarations/attributes, and other compiler dependent labels.
@@ -172,101 +181,6 @@ static _gostring_ Swig_AllocateString(const char *p, size_t l) {
   return ret;
 }
 
-/* -----------------------------------------------------------------------------
- * director_common.swg
- *
- * This file contains support for director classes which is common between
- * languages.
- * ----------------------------------------------------------------------------- */
-
-/*
-  Use -DSWIG_DIRECTOR_STATIC if you prefer to avoid the use of the
-  'Swig' namespace. This could be useful for multi-modules projects.
-*/
-#ifdef SWIG_DIRECTOR_STATIC
-/* Force anonymous (static) namespace */
-#define Swig
-#endif
-/* -----------------------------------------------------------------------------
- * director.swg
- *
- * This file contains support for director classes so that Go proxy
- * methods can be called from C++.
- * ----------------------------------------------------------------------------- */
-
-#include <exception>
-#include <map>
-
-namespace Swig {
-
-  class DirectorException : public std::exception {
-  };
-}
-
-/* Handle memory management for directors.  */
-
-namespace {
-  struct GCItem {
-    virtual ~GCItem() {}
-  };
-
-  struct GCItem_var {
-    GCItem_var(GCItem *item = 0) : _item(item) {
-    }
-
-    GCItem_var& operator=(GCItem *item) {
-      GCItem *tmp = _item;
-      _item = item;
-      delete tmp;
-      return *this;
-    }
-
-    ~GCItem_var() {
-      delete _item;
-    }
-
-    GCItem* operator->() {
-      return _item;
-    }
-
-    private:
-      GCItem *_item;
-  };
-
-  template <typename Type>
-  struct GCItem_T : GCItem {
-    GCItem_T(Type *ptr) : _ptr(ptr) {
-    }
-
-    virtual ~GCItem_T() {
-      delete _ptr;
-    }
-
-  private:
-    Type *_ptr;
-  };
-}
-
-class Swig_memory {
-public:
-  template <typename Type>
-  void swig_acquire_pointer(Type* vptr) {
-    if (vptr) {
-      swig_owner[vptr] = new GCItem_T<Type>(vptr);
-    }
-  }
-private:
-  typedef std::map<void *, GCItem_var> swig_ownership_map;
-  swig_ownership_map swig_owner;
-};
-
-template <typename Type>
-static void swig_acquire_pointer(Swig_memory** pmem, Type* ptr) {
-  if (!pmem) {
-    *pmem = new Swig_memory;
-  }
-  (*pmem)->swig_acquire_pointer(ptr);
-}
 
 #ifdef __cplusplus
 #include <utility>
@@ -325,7 +239,6 @@ static void* Swig_malloc(int c) {
 }
 
 
-#define SWIG_FILE_WITH_INIT
 #include "oqs/oqs.h"
 #include <string>
 
@@ -336,61 +249,42 @@ static void* Swig_malloc(int c) {
 #include <string>
 
 
-#include <vector>
-#include <stdexcept>
-
-
-typedef size_t size_t_p;
-
-SWIGINTERN size_t_p *new_size_t_p(){
-  return new size_t();
-}
-SWIGINTERN void delete_size_t_p(size_t_p *self){
-  delete self;
-}
-SWIGINTERN void size_t_p_assign(size_t_p *self,size_t value){
-  *self = value;
-}
-SWIGINTERN size_t size_t_p_value(size_t_p *self){
-  return *self;
-}
-SWIGINTERN size_t *size_t_p_cast(size_t_p *self){
-  return self;
-}
-SWIGINTERN size_t_p *size_t_p_frompointer(size_t *t){
-  return (size_t_p *) t;
-}
-
-    std::string OQS_randombytes(size_t bytes_to_read){
-        std::string random_string;
-        random_string.resize(bytes_to_read);
-        OQS_randombytes((uint8_t*)random_string.data(), bytes_to_read);
+    char *OQS_randombytes(size_t bytes_to_read){
+        char *random_string;
+        OQS_randombytes((uint8_t*)random_string, bytes_to_read);
         return random_string;
     }
 
+
+    struct SIG_KEYPAIR_RESULT {
+        OQS_STATUS status;
+        uint8_t *public_key;
+        uint8_t *private_key;
+    };
 
     class OQS_SIGNATURE
     {
     public:
         OQS_SIG *sig_struct;
         bool construct_success;
-        std::string method_name;
-        std::string alg_version;
+        const char *method_name;
+        const char *alg_version;
         uint8_t claimed_nist_level;
         bool euf_cma;
         size_t length_public_key;
         size_t length_private_key;
         size_t length_signature;
 
-        OQS_SIGNATURE(char *signature_name) : construct_success(true)
+        OQS_SIGNATURE(char *signature_name)
         {
             sig_struct = OQS_SIG_new(signature_name);
             if (sig_struct == NULL) {
                 construct_success = false;
                 return;
             }
-            method_name = std::string(sig_struct->method_name);
-            alg_version = std::string(sig_struct->alg_version);
+            construct_success = true;
+            method_name = sig_struct->method_name;
+            alg_version = sig_struct->alg_version;
             claimed_nist_level = sig_struct->claimed_nist_level;
             euf_cma = sig_struct->euf_cma;
             length_public_key = sig_struct->length_public_key;
@@ -398,10 +292,8 @@ SWIGINTERN size_t_p *size_t_p_frompointer(size_t *t){
             length_signature = sig_struct->length_signature;
         }
 
-        ~OQS_SIGNATURE()
-        {
-            if (sig_struct != NULL)
-            {
+        ~OQS_SIGNATURE() {
+            if (sig_struct != NULL) {
                 OQS_SIG_free(sig_struct);
                 sig_struct = NULL;
             }
@@ -424,13 +316,16 @@ SWIGINTERN size_t_p *size_t_p_frompointer(size_t *t){
     };
 
 
+#include <string.h>
+
+
     class OQS_KEYENCAPSULATION
     {
     public:
         OQS_KEM *kem_struct;
         bool construct_success;
-        std::string method_name;
-        std::string alg_version;
+        const char *method_name;
+        const char *alg_version;
         uint8_t claimed_nist_level;
         bool ind_cca;
         size_t length_public_key;
@@ -438,15 +333,16 @@ SWIGINTERN size_t_p *size_t_p_frompointer(size_t *t){
         size_t length_ciphertext;
         size_t length_shared_secret;
 
-        OQS_KEYENCAPSULATION(char *kem_name) : construct_success(true)
+        OQS_KEYENCAPSULATION(char *kem_name)
         {
             kem_struct = OQS_KEM_new(kem_name);
             if (kem_struct == NULL) {
                 construct_success = false;
                 return;
             }
-            method_name = std::string(kem_struct->method_name);
-            alg_version = std::string(kem_struct->alg_version);
+            construct_success = true;
+            method_name = kem_struct->method_name;
+            alg_version = kem_struct->alg_version;
             claimed_nist_level = kem_struct->claimed_nist_level;
             ind_cca = kem_struct->ind_cca;
             length_public_key = kem_struct->length_public_key;
@@ -455,10 +351,8 @@ SWIGINTERN size_t_p *size_t_p_frompointer(size_t *t){
             length_shared_secret = kem_struct->length_shared_secret;
         }
 
-        ~OQS_KEYENCAPSULATION()
-        {
-            if (kem_struct != NULL)
-            {
+        ~OQS_KEYENCAPSULATION() {
+            if (kem_struct != NULL) {
                 OQS_KEM_free(kem_struct);
                 kem_struct = NULL;
             }
@@ -480,15 +374,11 @@ SWIGINTERN size_t_p *size_t_p_frompointer(size_t *t){
         }
     };
 
-
-// C++ director class methods.
-#include "oqsgo_wrap.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void _wrap_Swig_free_oqsgo_4e8e82db66bc50ad(void *_swig_go_0) {
+void _wrap_Swig_free_oqsgo_314eaa0e274a5d13(void *_swig_go_0) {
   void *arg1 = (void *) 0 ;
   
   arg1 = *(void **)&_swig_go_0; 
@@ -498,7 +388,7 @@ void _wrap_Swig_free_oqsgo_4e8e82db66bc50ad(void *_swig_go_0) {
 }
 
 
-void *_wrap_Swig_malloc_oqsgo_4e8e82db66bc50ad(intgo _swig_go_0) {
+void *_wrap_Swig_malloc_oqsgo_314eaa0e274a5d13(intgo _swig_go_0) {
   int arg1 ;
   void *result = 0 ;
   void *_swig_go_result;
@@ -511,92 +401,20 @@ void *_wrap_Swig_malloc_oqsgo_4e8e82db66bc50ad(intgo _swig_go_0) {
 }
 
 
-size_t_p *_wrap_new_size_t_p_oqsgo_4e8e82db66bc50ad() {
-  size_t_p *result = 0 ;
-  size_t_p *_swig_go_result;
-  
-  
-  result = (size_t_p *)new_size_t_p();
-  *(size_t_p **)&_swig_go_result = (size_t_p *)result; 
-  return _swig_go_result;
-}
-
-
-void _wrap_delete_size_t_p_oqsgo_4e8e82db66bc50ad(size_t_p *_swig_go_0) {
-  size_t_p *arg1 = (size_t_p *) 0 ;
-  
-  arg1 = *(size_t_p **)&_swig_go_0; 
-  
-  delete_size_t_p(arg1);
-  
-}
-
-
-void _wrap_size_t_p_assign_oqsgo_4e8e82db66bc50ad(size_t_p *_swig_go_0, long long _swig_go_1) {
-  size_t_p *arg1 = (size_t_p *) 0 ;
-  size_t arg2 ;
-  
-  arg1 = *(size_t_p **)&_swig_go_0; 
-  arg2 = (size_t)_swig_go_1; 
-  
-  size_t_p_assign(arg1,SWIG_STD_MOVE(arg2));
-  
-}
-
-
-long long _wrap_size_t_p_value_oqsgo_4e8e82db66bc50ad(size_t_p *_swig_go_0) {
-  size_t_p *arg1 = (size_t_p *) 0 ;
-  size_t result;
-  long long _swig_go_result;
-  
-  arg1 = *(size_t_p **)&_swig_go_0; 
-  
-  result = size_t_p_value(arg1);
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
-long long *_wrap_size_t_p_cast_oqsgo_4e8e82db66bc50ad(size_t_p *_swig_go_0) {
-  size_t_p *arg1 = (size_t_p *) 0 ;
-  size_t *result = 0 ;
-  long long *_swig_go_result;
-  
-  arg1 = *(size_t_p **)&_swig_go_0; 
-  
-  result = (size_t *)size_t_p_cast(arg1);
-  *(size_t **)&_swig_go_result = (size_t *)result; 
-  return _swig_go_result;
-}
-
-
-size_t_p *_wrap_size_t_p_frompointer_oqsgo_4e8e82db66bc50ad(long long *_swig_go_0) {
-  size_t *arg1 = (size_t *) 0 ;
-  size_t_p *result = 0 ;
-  size_t_p *_swig_go_result;
-  
-  arg1 = *(size_t **)&_swig_go_0; 
-  
-  result = (size_t_p *)size_t_p_frompointer(arg1);
-  *(size_t_p **)&_swig_go_result = (size_t_p *)result; 
-  return _swig_go_result;
-}
-
-
-_gostring_ _wrap_OQS_randombytes_oqsgo_4e8e82db66bc50ad(long long _swig_go_0) {
+_gostring_ _wrap_OQS_randombytes_oqsgo_314eaa0e274a5d13(long long _swig_go_0) {
   size_t arg1 ;
-  std::string result;
+  char *result = 0 ;
   _gostring_ _swig_go_result;
   
   arg1 = (size_t)_swig_go_0; 
   
-  result = OQS_randombytes(SWIG_STD_MOVE(arg1));
-  _swig_go_result = Swig_AllocateString((&result)->data(), (&result)->length()); 
+  result = (char *)OQS_randombytes(SWIG_STD_MOVE(arg1));
+  _swig_go_result = Swig_AllocateString((char*)result, result ? strlen((char*)result) : 0); 
   return _swig_go_result;
 }
 
 
-intgo _wrap_OQS_randombytes_switch_algorithm_oqsgo_4e8e82db66bc50ad(_gostring_ _swig_go_0) {
+intgo _wrap_OQS_randombytes_switch_algorithm_oqsgo_314eaa0e274a5d13(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   OQS_STATUS result;
   intgo _swig_go_result;
@@ -614,7 +432,7 @@ intgo _wrap_OQS_randombytes_switch_algorithm_oqsgo_4e8e82db66bc50ad(_gostring_ _
 }
 
 
-_gostring_ _wrap_OQS_SIG_alg_identifier_oqsgo_4e8e82db66bc50ad(long long _swig_go_0) {
+_gostring_ _wrap_OQS_SIG_alg_identifier_oqsgo_314eaa0e274a5d13(long long _swig_go_0) {
   size_t arg1 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -627,7 +445,7 @@ _gostring_ _wrap_OQS_SIG_alg_identifier_oqsgo_4e8e82db66bc50ad(long long _swig_g
 }
 
 
-intgo _wrap_OQS_SIG_alg_count_oqsgo_4e8e82db66bc50ad() {
+intgo _wrap_OQS_SIG_alg_count_oqsgo_314eaa0e274a5d13() {
   int result;
   intgo _swig_go_result;
   
@@ -638,7 +456,7 @@ intgo _wrap_OQS_SIG_alg_count_oqsgo_4e8e82db66bc50ad() {
 }
 
 
-intgo _wrap_OQS_SIG_alg_is_enabled_oqsgo_4e8e82db66bc50ad(_gostring_ _swig_go_0) {
+intgo _wrap_OQS_SIG_alg_is_enabled_oqsgo_314eaa0e274a5d13(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -656,7 +474,103 @@ intgo _wrap_OQS_SIG_alg_is_enabled_oqsgo_4e8e82db66bc50ad(_gostring_ _swig_go_0)
 }
 
 
-void _wrap_OQS_SIGNATURE_sig_struct_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, OQS_SIG *_swig_go_1) {
+void _wrap_SIG_KEYPAIR_RESULT_status_set_oqsgo_314eaa0e274a5d13(SIG_KEYPAIR_RESULT *_swig_go_0, intgo _swig_go_1) {
+  SIG_KEYPAIR_RESULT *arg1 = (SIG_KEYPAIR_RESULT *) 0 ;
+  OQS_STATUS arg2 ;
+  
+  arg1 = *(SIG_KEYPAIR_RESULT **)&_swig_go_0; 
+  arg2 = (OQS_STATUS)_swig_go_1; 
+  
+  if (arg1) (arg1)->status = arg2;
+  
+}
+
+
+intgo _wrap_SIG_KEYPAIR_RESULT_status_get_oqsgo_314eaa0e274a5d13(SIG_KEYPAIR_RESULT *_swig_go_0) {
+  SIG_KEYPAIR_RESULT *arg1 = (SIG_KEYPAIR_RESULT *) 0 ;
+  OQS_STATUS result;
+  intgo _swig_go_result;
+  
+  arg1 = *(SIG_KEYPAIR_RESULT **)&_swig_go_0; 
+  
+  result = (OQS_STATUS) ((arg1)->status);
+  _swig_go_result = (intgo)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_SIG_KEYPAIR_RESULT_public_key_set_oqsgo_314eaa0e274a5d13(SIG_KEYPAIR_RESULT *_swig_go_0, char *_swig_go_1) {
+  SIG_KEYPAIR_RESULT *arg1 = (SIG_KEYPAIR_RESULT *) 0 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  
+  arg1 = *(SIG_KEYPAIR_RESULT **)&_swig_go_0; 
+  arg2 = *(uint8_t **)&_swig_go_1; 
+  
+  if (arg1) (arg1)->public_key = arg2;
+  
+}
+
+
+char *_wrap_SIG_KEYPAIR_RESULT_public_key_get_oqsgo_314eaa0e274a5d13(SIG_KEYPAIR_RESULT *_swig_go_0) {
+  SIG_KEYPAIR_RESULT *arg1 = (SIG_KEYPAIR_RESULT *) 0 ;
+  uint8_t *result = 0 ;
+  char *_swig_go_result;
+  
+  arg1 = *(SIG_KEYPAIR_RESULT **)&_swig_go_0; 
+  
+  result = (uint8_t *) ((arg1)->public_key);
+  *(uint8_t **)&_swig_go_result = (uint8_t *)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_SIG_KEYPAIR_RESULT_private_key_set_oqsgo_314eaa0e274a5d13(SIG_KEYPAIR_RESULT *_swig_go_0, char *_swig_go_1) {
+  SIG_KEYPAIR_RESULT *arg1 = (SIG_KEYPAIR_RESULT *) 0 ;
+  uint8_t *arg2 = (uint8_t *) 0 ;
+  
+  arg1 = *(SIG_KEYPAIR_RESULT **)&_swig_go_0; 
+  arg2 = *(uint8_t **)&_swig_go_1; 
+  
+  if (arg1) (arg1)->private_key = arg2;
+  
+}
+
+
+char *_wrap_SIG_KEYPAIR_RESULT_private_key_get_oqsgo_314eaa0e274a5d13(SIG_KEYPAIR_RESULT *_swig_go_0) {
+  SIG_KEYPAIR_RESULT *arg1 = (SIG_KEYPAIR_RESULT *) 0 ;
+  uint8_t *result = 0 ;
+  char *_swig_go_result;
+  
+  arg1 = *(SIG_KEYPAIR_RESULT **)&_swig_go_0; 
+  
+  result = (uint8_t *) ((arg1)->private_key);
+  *(uint8_t **)&_swig_go_result = (uint8_t *)result; 
+  return _swig_go_result;
+}
+
+
+SIG_KEYPAIR_RESULT *_wrap_new_SIG_KEYPAIR_RESULT_oqsgo_314eaa0e274a5d13() {
+  SIG_KEYPAIR_RESULT *result = 0 ;
+  SIG_KEYPAIR_RESULT *_swig_go_result;
+  
+  
+  result = (SIG_KEYPAIR_RESULT *)new SIG_KEYPAIR_RESULT();
+  *(SIG_KEYPAIR_RESULT **)&_swig_go_result = (SIG_KEYPAIR_RESULT *)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_delete_SIG_KEYPAIR_RESULT_oqsgo_314eaa0e274a5d13(SIG_KEYPAIR_RESULT *_swig_go_0) {
+  SIG_KEYPAIR_RESULT *arg1 = (SIG_KEYPAIR_RESULT *) 0 ;
+  
+  arg1 = *(SIG_KEYPAIR_RESULT **)&_swig_go_0; 
+  
+  delete arg1;
+  
+}
+
+
+void _wrap_OQS_SIGNATURE_sig_struct_set_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, OQS_SIG *_swig_go_1) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   OQS_SIG *arg2 = (OQS_SIG *) 0 ;
   
@@ -668,7 +582,7 @@ void _wrap_OQS_SIGNATURE_sig_struct_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_s
 }
 
 
-OQS_SIG *_wrap_OQS_SIGNATURE_sig_struct_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0) {
+OQS_SIG *_wrap_OQS_SIGNATURE_sig_struct_get_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   OQS_SIG *result = 0 ;
   OQS_SIG *_swig_go_result;
@@ -681,7 +595,7 @@ OQS_SIG *_wrap_OQS_SIGNATURE_sig_struct_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE
 }
 
 
-void _wrap_OQS_SIGNATURE_construct_success_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, bool _swig_go_1) {
+void _wrap_OQS_SIGNATURE_construct_success_set_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, bool _swig_go_1) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   bool arg2 ;
   
@@ -693,7 +607,7 @@ void _wrap_OQS_SIGNATURE_construct_success_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNAT
 }
 
 
-bool _wrap_OQS_SIGNATURE_construct_success_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0) {
+bool _wrap_OQS_SIGNATURE_construct_success_get_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -706,63 +620,81 @@ bool _wrap_OQS_SIGNATURE_construct_success_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNAT
 }
 
 
-void _wrap_OQS_SIGNATURE_method_name_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_OQS_SIGNATURE_method_name_set_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, _gostring_ _swig_go_1) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
-  std::string *arg2 = 0 ;
+  char *arg2 = (char *) 0 ;
   
   arg1 = *(OQS_SIGNATURE **)&_swig_go_0; 
   
-  std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
-  arg2 = &arg2_str;
+  arg2 = (char *)malloc(_swig_go_1.n + 1);
+  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
+  arg2[_swig_go_1.n] = '\0';
   
   
-  if (arg1) (arg1)->method_name = *arg2;
+  {
+    if (arg2) {
+      arg1->method_name = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->method_name, (const char *)arg2);
+    } else {
+      arg1->method_name = 0;
+    }
+  }
   
+  free(arg2); 
 }
 
 
-_gostring_ _wrap_OQS_SIGNATURE_method_name_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0) {
+_gostring_ _wrap_OQS_SIGNATURE_method_name_get_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
-  std::string *result = 0 ;
+  char *result = 0 ;
   _gostring_ _swig_go_result;
   
   arg1 = *(OQS_SIGNATURE **)&_swig_go_0; 
   
-  result = (std::string *) & ((arg1)->method_name);
-  _swig_go_result = Swig_AllocateString((*result).data(), (*result).length()); 
+  result = (char *) ((arg1)->method_name);
+  _swig_go_result = Swig_AllocateString((char*)result, result ? strlen((char*)result) : 0); 
   return _swig_go_result;
 }
 
 
-void _wrap_OQS_SIGNATURE_alg_version_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_OQS_SIGNATURE_alg_version_set_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, _gostring_ _swig_go_1) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
-  std::string *arg2 = 0 ;
+  char *arg2 = (char *) 0 ;
   
   arg1 = *(OQS_SIGNATURE **)&_swig_go_0; 
   
-  std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
-  arg2 = &arg2_str;
+  arg2 = (char *)malloc(_swig_go_1.n + 1);
+  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
+  arg2[_swig_go_1.n] = '\0';
   
   
-  if (arg1) (arg1)->alg_version = *arg2;
+  {
+    if (arg2) {
+      arg1->alg_version = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->alg_version, (const char *)arg2);
+    } else {
+      arg1->alg_version = 0;
+    }
+  }
   
+  free(arg2); 
 }
 
 
-_gostring_ _wrap_OQS_SIGNATURE_alg_version_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0) {
+_gostring_ _wrap_OQS_SIGNATURE_alg_version_get_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
-  std::string *result = 0 ;
+  char *result = 0 ;
   _gostring_ _swig_go_result;
   
   arg1 = *(OQS_SIGNATURE **)&_swig_go_0; 
   
-  result = (std::string *) & ((arg1)->alg_version);
-  _swig_go_result = Swig_AllocateString((*result).data(), (*result).length()); 
+  result = (char *) ((arg1)->alg_version);
+  _swig_go_result = Swig_AllocateString((char*)result, result ? strlen((char*)result) : 0); 
   return _swig_go_result;
 }
 
 
-void _wrap_OQS_SIGNATURE_claimed_nist_level_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, char _swig_go_1) {
+void _wrap_OQS_SIGNATURE_claimed_nist_level_set_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, char _swig_go_1) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   uint8_t arg2 ;
   
@@ -774,7 +706,7 @@ void _wrap_OQS_SIGNATURE_claimed_nist_level_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNA
 }
 
 
-char _wrap_OQS_SIGNATURE_claimed_nist_level_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0) {
+char _wrap_OQS_SIGNATURE_claimed_nist_level_get_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   uint8_t result;
   char _swig_go_result;
@@ -787,7 +719,7 @@ char _wrap_OQS_SIGNATURE_claimed_nist_level_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNA
 }
 
 
-void _wrap_OQS_SIGNATURE_euf_cma_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, bool _swig_go_1) {
+void _wrap_OQS_SIGNATURE_euf_cma_set_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, bool _swig_go_1) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   bool arg2 ;
   
@@ -799,7 +731,7 @@ void _wrap_OQS_SIGNATURE_euf_cma_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig
 }
 
 
-bool _wrap_OQS_SIGNATURE_euf_cma_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0) {
+bool _wrap_OQS_SIGNATURE_euf_cma_get_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -812,7 +744,7 @@ bool _wrap_OQS_SIGNATURE_euf_cma_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig
 }
 
 
-void _wrap_OQS_SIGNATURE_length_public_key_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, long long _swig_go_1) {
+void _wrap_OQS_SIGNATURE_length_public_key_set_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, long long _swig_go_1) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   size_t arg2 ;
   
@@ -824,7 +756,7 @@ void _wrap_OQS_SIGNATURE_length_public_key_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNAT
 }
 
 
-long long _wrap_OQS_SIGNATURE_length_public_key_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0) {
+long long _wrap_OQS_SIGNATURE_length_public_key_get_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   size_t result;
   long long _swig_go_result;
@@ -837,7 +769,7 @@ long long _wrap_OQS_SIGNATURE_length_public_key_get_oqsgo_4e8e82db66bc50ad(OQS_S
 }
 
 
-void _wrap_OQS_SIGNATURE_length_private_key_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, long long _swig_go_1) {
+void _wrap_OQS_SIGNATURE_length_private_key_set_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, long long _swig_go_1) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   size_t arg2 ;
   
@@ -849,7 +781,7 @@ void _wrap_OQS_SIGNATURE_length_private_key_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNA
 }
 
 
-long long _wrap_OQS_SIGNATURE_length_private_key_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0) {
+long long _wrap_OQS_SIGNATURE_length_private_key_get_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   size_t result;
   long long _swig_go_result;
@@ -862,7 +794,7 @@ long long _wrap_OQS_SIGNATURE_length_private_key_get_oqsgo_4e8e82db66bc50ad(OQS_
 }
 
 
-void _wrap_OQS_SIGNATURE_length_signature_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, long long _swig_go_1) {
+void _wrap_OQS_SIGNATURE_length_signature_set_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, long long _swig_go_1) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   size_t arg2 ;
   
@@ -874,7 +806,7 @@ void _wrap_OQS_SIGNATURE_length_signature_set_oqsgo_4e8e82db66bc50ad(OQS_SIGNATU
 }
 
 
-long long _wrap_OQS_SIGNATURE_length_signature_get_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0) {
+long long _wrap_OQS_SIGNATURE_length_signature_get_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   size_t result;
   long long _swig_go_result;
@@ -887,7 +819,7 @@ long long _wrap_OQS_SIGNATURE_length_signature_get_oqsgo_4e8e82db66bc50ad(OQS_SI
 }
 
 
-OQS_SIGNATURE *_wrap_new_OQS_SIGNATURE_oqsgo_4e8e82db66bc50ad(_gostring_ _swig_go_0) {
+OQS_SIGNATURE *_wrap_new_OQS_SIGNATURE_oqsgo_314eaa0e274a5d13(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   OQS_SIGNATURE *result = 0 ;
   OQS_SIGNATURE *_swig_go_result;
@@ -905,7 +837,7 @@ OQS_SIGNATURE *_wrap_new_OQS_SIGNATURE_oqsgo_4e8e82db66bc50ad(_gostring_ _swig_g
 }
 
 
-void _wrap_delete_OQS_SIGNATURE_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0) {
+void _wrap_delete_OQS_SIGNATURE_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   
   arg1 = *(OQS_SIGNATURE **)&_swig_go_0; 
@@ -915,7 +847,7 @@ void _wrap_delete_OQS_SIGNATURE_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0
 }
 
 
-intgo _wrap_OQS_SIGNATURE_keypair_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+intgo _wrap_OQS_SIGNATURE_keypair_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, _goslice_ _swig_go_1, _goslice_ _swig_go_2) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -923,26 +855,30 @@ intgo _wrap_OQS_SIGNATURE_keypair_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go
   intgo _swig_go_result;
   
   arg1 = *(OQS_SIGNATURE **)&_swig_go_0; 
-  
-  arg2 = (char *)malloc(_swig_go_1.n + 1);
-  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
-  arg2[_swig_go_1.n] = '\0';
-  
-  
-  arg3 = (char *)malloc(_swig_go_2.n + 1);
-  memcpy(arg3, _swig_go_2.p, _swig_go_2.n);
-  arg3[_swig_go_2.n] = '\0';
-  
+  {
+    if (_swig_go_1.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg2 = (char *) _swig_go_1.array;
+  }
+  {
+    if (_swig_go_2.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg3 = (char *) _swig_go_2.array;
+  }
   
   result = (OQS_STATUS)(arg1)->keypair(arg2,arg3);
   _swig_go_result = (intgo)result; 
-  free(arg2); 
-  free(arg3); 
+  
+  
+  
+  
   return _swig_go_result;
 }
 
 
-intgo _wrap_OQS_SIGNATURE_sign_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, _gostring_ _swig_go_1, long long *_swig_go_2, _gostring_ _swig_go_3, long long _swig_go_4, _gostring_ _swig_go_5) {
+intgo _wrap_OQS_SIGNATURE_sign_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, _goslice_ _swig_go_1, long long *_swig_go_2, _gostring_ _swig_go_3, long long _swig_go_4, _goslice_ _swig_go_5) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   char *arg2 = (char *) 0 ;
   size_t *arg3 = 0 ;
@@ -953,11 +889,12 @@ intgo _wrap_OQS_SIGNATURE_sign_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0,
   intgo _swig_go_result;
   
   arg1 = *(OQS_SIGNATURE **)&_swig_go_0; 
-  
-  arg2 = (char *)malloc(_swig_go_1.n + 1);
-  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
-  arg2[_swig_go_1.n] = '\0';
-  
+  {
+    if (_swig_go_1.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg2 = (char *) _swig_go_1.array;
+  }
   arg3 = *(size_t **)&_swig_go_2; 
   
   arg4 = (char *)malloc(_swig_go_3.n + 1);
@@ -965,22 +902,25 @@ intgo _wrap_OQS_SIGNATURE_sign_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0,
   arg4[_swig_go_3.n] = '\0';
   
   arg5 = (size_t)_swig_go_4; 
-  
-  arg6 = (char *)malloc(_swig_go_5.n + 1);
-  memcpy(arg6, _swig_go_5.p, _swig_go_5.n);
-  arg6[_swig_go_5.n] = '\0';
-  
+  {
+    if (_swig_go_5.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg6 = (char *) _swig_go_5.array;
+  }
   
   result = (OQS_STATUS)(arg1)->sign(arg2,*arg3,(char const *)arg4,arg5,(char const *)arg6);
   _swig_go_result = (intgo)result; 
-  free(arg2); 
+  
+  
+  
   free(arg4); 
-  free(arg6); 
+  
   return _swig_go_result;
 }
 
 
-intgo _wrap_OQS_SIGNATURE_verify_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_0, _gostring_ _swig_go_1, long long _swig_go_2, _gostring_ _swig_go_3, long long _swig_go_4, _gostring_ _swig_go_5) {
+intgo _wrap_OQS_SIGNATURE_verify_oqsgo_314eaa0e274a5d13(OQS_SIGNATURE *_swig_go_0, _gostring_ _swig_go_1, long long _swig_go_2, _goslice_ _swig_go_3, long long _swig_go_4, _goslice_ _swig_go_5) {
   OQS_SIGNATURE *arg1 = (OQS_SIGNATURE *) 0 ;
   char *arg2 = (char *) 0 ;
   size_t arg3 ;
@@ -997,28 +937,32 @@ intgo _wrap_OQS_SIGNATURE_verify_oqsgo_4e8e82db66bc50ad(OQS_SIGNATURE *_swig_go_
   arg2[_swig_go_1.n] = '\0';
   
   arg3 = (size_t)_swig_go_2; 
-  
-  arg4 = (char *)malloc(_swig_go_3.n + 1);
-  memcpy(arg4, _swig_go_3.p, _swig_go_3.n);
-  arg4[_swig_go_3.n] = '\0';
-  
+  {
+    if (_swig_go_3.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg4 = (char *) _swig_go_3.array;
+  }
   arg5 = (size_t)_swig_go_4; 
-  
-  arg6 = (char *)malloc(_swig_go_5.n + 1);
-  memcpy(arg6, _swig_go_5.p, _swig_go_5.n);
-  arg6[_swig_go_5.n] = '\0';
-  
+  {
+    if (_swig_go_5.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg6 = (char *) _swig_go_5.array;
+  }
   
   result = (OQS_STATUS)(arg1)->verify((char const *)arg2,arg3,(char const *)arg4,arg5,(char const *)arg6);
   _swig_go_result = (intgo)result; 
+  
+  
   free(arg2); 
-  free(arg4); 
-  free(arg6); 
+  
+  
   return _swig_go_result;
 }
 
 
-_gostring_ _wrap_OQS_KEM_alg_identifier_oqsgo_4e8e82db66bc50ad(long long _swig_go_0) {
+_gostring_ _wrap_OQS_KEM_alg_identifier_oqsgo_314eaa0e274a5d13(long long _swig_go_0) {
   size_t arg1 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -1031,7 +975,7 @@ _gostring_ _wrap_OQS_KEM_alg_identifier_oqsgo_4e8e82db66bc50ad(long long _swig_g
 }
 
 
-intgo _wrap_OQS_KEM_alg_count_oqsgo_4e8e82db66bc50ad() {
+intgo _wrap_OQS_KEM_alg_count_oqsgo_314eaa0e274a5d13() {
   int result;
   intgo _swig_go_result;
   
@@ -1042,7 +986,7 @@ intgo _wrap_OQS_KEM_alg_count_oqsgo_4e8e82db66bc50ad() {
 }
 
 
-intgo _wrap_OQS_KEM_alg_is_enabled_oqsgo_4e8e82db66bc50ad(_gostring_ _swig_go_0) {
+intgo _wrap_OQS_KEM_alg_is_enabled_oqsgo_314eaa0e274a5d13(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -1060,7 +1004,7 @@ intgo _wrap_OQS_KEM_alg_is_enabled_oqsgo_4e8e82db66bc50ad(_gostring_ _swig_go_0)
 }
 
 
-void _wrap_OQS_KEYENCAPSULATION_kem_struct_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, OQS_KEM *_swig_go_1) {
+void _wrap_OQS_KEYENCAPSULATION_kem_struct_set_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, OQS_KEM *_swig_go_1) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   OQS_KEM *arg2 = (OQS_KEM *) 0 ;
   
@@ -1072,7 +1016,7 @@ void _wrap_OQS_KEYENCAPSULATION_kem_struct_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENC
 }
 
 
-OQS_KEM *_wrap_OQS_KEYENCAPSULATION_kem_struct_get_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0) {
+OQS_KEM *_wrap_OQS_KEYENCAPSULATION_kem_struct_get_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   OQS_KEM *result = 0 ;
   OQS_KEM *_swig_go_result;
@@ -1085,7 +1029,7 @@ OQS_KEM *_wrap_OQS_KEYENCAPSULATION_kem_struct_get_oqsgo_4e8e82db66bc50ad(OQS_KE
 }
 
 
-void _wrap_OQS_KEYENCAPSULATION_construct_success_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, bool _swig_go_1) {
+void _wrap_OQS_KEYENCAPSULATION_construct_success_set_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, bool _swig_go_1) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   bool arg2 ;
   
@@ -1097,7 +1041,7 @@ void _wrap_OQS_KEYENCAPSULATION_construct_success_set_oqsgo_4e8e82db66bc50ad(OQS
 }
 
 
-bool _wrap_OQS_KEYENCAPSULATION_construct_success_get_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0) {
+bool _wrap_OQS_KEYENCAPSULATION_construct_success_get_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1110,63 +1054,81 @@ bool _wrap_OQS_KEYENCAPSULATION_construct_success_get_oqsgo_4e8e82db66bc50ad(OQS
 }
 
 
-void _wrap_OQS_KEYENCAPSULATION_method_name_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_OQS_KEYENCAPSULATION_method_name_set_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, _gostring_ _swig_go_1) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
-  std::string *arg2 = 0 ;
+  char *arg2 = (char *) 0 ;
   
   arg1 = *(OQS_KEYENCAPSULATION **)&_swig_go_0; 
   
-  std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
-  arg2 = &arg2_str;
+  arg2 = (char *)malloc(_swig_go_1.n + 1);
+  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
+  arg2[_swig_go_1.n] = '\0';
   
   
-  if (arg1) (arg1)->method_name = *arg2;
+  {
+    if (arg2) {
+      arg1->method_name = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->method_name, (const char *)arg2);
+    } else {
+      arg1->method_name = 0;
+    }
+  }
   
+  free(arg2); 
 }
 
 
-_gostring_ _wrap_OQS_KEYENCAPSULATION_method_name_get_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0) {
+_gostring_ _wrap_OQS_KEYENCAPSULATION_method_name_get_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
-  std::string *result = 0 ;
+  char *result = 0 ;
   _gostring_ _swig_go_result;
   
   arg1 = *(OQS_KEYENCAPSULATION **)&_swig_go_0; 
   
-  result = (std::string *) & ((arg1)->method_name);
-  _swig_go_result = Swig_AllocateString((*result).data(), (*result).length()); 
+  result = (char *) ((arg1)->method_name);
+  _swig_go_result = Swig_AllocateString((char*)result, result ? strlen((char*)result) : 0); 
   return _swig_go_result;
 }
 
 
-void _wrap_OQS_KEYENCAPSULATION_alg_version_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_OQS_KEYENCAPSULATION_alg_version_set_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, _gostring_ _swig_go_1) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
-  std::string *arg2 = 0 ;
+  char *arg2 = (char *) 0 ;
   
   arg1 = *(OQS_KEYENCAPSULATION **)&_swig_go_0; 
   
-  std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
-  arg2 = &arg2_str;
+  arg2 = (char *)malloc(_swig_go_1.n + 1);
+  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
+  arg2[_swig_go_1.n] = '\0';
   
   
-  if (arg1) (arg1)->alg_version = *arg2;
+  {
+    if (arg2) {
+      arg1->alg_version = (char const *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->alg_version, (const char *)arg2);
+    } else {
+      arg1->alg_version = 0;
+    }
+  }
   
+  free(arg2); 
 }
 
 
-_gostring_ _wrap_OQS_KEYENCAPSULATION_alg_version_get_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0) {
+_gostring_ _wrap_OQS_KEYENCAPSULATION_alg_version_get_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
-  std::string *result = 0 ;
+  char *result = 0 ;
   _gostring_ _swig_go_result;
   
   arg1 = *(OQS_KEYENCAPSULATION **)&_swig_go_0; 
   
-  result = (std::string *) & ((arg1)->alg_version);
-  _swig_go_result = Swig_AllocateString((*result).data(), (*result).length()); 
+  result = (char *) ((arg1)->alg_version);
+  _swig_go_result = Swig_AllocateString((char*)result, result ? strlen((char*)result) : 0); 
   return _swig_go_result;
 }
 
 
-void _wrap_OQS_KEYENCAPSULATION_claimed_nist_level_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, char _swig_go_1) {
+void _wrap_OQS_KEYENCAPSULATION_claimed_nist_level_set_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, char _swig_go_1) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   uint8_t arg2 ;
   
@@ -1178,7 +1140,7 @@ void _wrap_OQS_KEYENCAPSULATION_claimed_nist_level_set_oqsgo_4e8e82db66bc50ad(OQ
 }
 
 
-char _wrap_OQS_KEYENCAPSULATION_claimed_nist_level_get_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0) {
+char _wrap_OQS_KEYENCAPSULATION_claimed_nist_level_get_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   uint8_t result;
   char _swig_go_result;
@@ -1191,7 +1153,7 @@ char _wrap_OQS_KEYENCAPSULATION_claimed_nist_level_get_oqsgo_4e8e82db66bc50ad(OQ
 }
 
 
-void _wrap_OQS_KEYENCAPSULATION_ind_cca_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, bool _swig_go_1) {
+void _wrap_OQS_KEYENCAPSULATION_ind_cca_set_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, bool _swig_go_1) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   bool arg2 ;
   
@@ -1203,7 +1165,7 @@ void _wrap_OQS_KEYENCAPSULATION_ind_cca_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPS
 }
 
 
-bool _wrap_OQS_KEYENCAPSULATION_ind_cca_get_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0) {
+bool _wrap_OQS_KEYENCAPSULATION_ind_cca_get_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1216,7 +1178,7 @@ bool _wrap_OQS_KEYENCAPSULATION_ind_cca_get_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPS
 }
 
 
-void _wrap_OQS_KEYENCAPSULATION_length_public_key_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, long long _swig_go_1) {
+void _wrap_OQS_KEYENCAPSULATION_length_public_key_set_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, long long _swig_go_1) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   size_t arg2 ;
   
@@ -1228,7 +1190,7 @@ void _wrap_OQS_KEYENCAPSULATION_length_public_key_set_oqsgo_4e8e82db66bc50ad(OQS
 }
 
 
-long long _wrap_OQS_KEYENCAPSULATION_length_public_key_get_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0) {
+long long _wrap_OQS_KEYENCAPSULATION_length_public_key_get_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   size_t result;
   long long _swig_go_result;
@@ -1241,7 +1203,7 @@ long long _wrap_OQS_KEYENCAPSULATION_length_public_key_get_oqsgo_4e8e82db66bc50a
 }
 
 
-void _wrap_OQS_KEYENCAPSULATION_length_private_key_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, long long _swig_go_1) {
+void _wrap_OQS_KEYENCAPSULATION_length_private_key_set_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, long long _swig_go_1) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   size_t arg2 ;
   
@@ -1253,7 +1215,7 @@ void _wrap_OQS_KEYENCAPSULATION_length_private_key_set_oqsgo_4e8e82db66bc50ad(OQ
 }
 
 
-long long _wrap_OQS_KEYENCAPSULATION_length_private_key_get_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0) {
+long long _wrap_OQS_KEYENCAPSULATION_length_private_key_get_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   size_t result;
   long long _swig_go_result;
@@ -1266,7 +1228,7 @@ long long _wrap_OQS_KEYENCAPSULATION_length_private_key_get_oqsgo_4e8e82db66bc50
 }
 
 
-void _wrap_OQS_KEYENCAPSULATION_length_ciphertext_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, long long _swig_go_1) {
+void _wrap_OQS_KEYENCAPSULATION_length_ciphertext_set_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, long long _swig_go_1) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   size_t arg2 ;
   
@@ -1278,7 +1240,7 @@ void _wrap_OQS_KEYENCAPSULATION_length_ciphertext_set_oqsgo_4e8e82db66bc50ad(OQS
 }
 
 
-long long _wrap_OQS_KEYENCAPSULATION_length_ciphertext_get_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0) {
+long long _wrap_OQS_KEYENCAPSULATION_length_ciphertext_get_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   size_t result;
   long long _swig_go_result;
@@ -1291,7 +1253,7 @@ long long _wrap_OQS_KEYENCAPSULATION_length_ciphertext_get_oqsgo_4e8e82db66bc50a
 }
 
 
-void _wrap_OQS_KEYENCAPSULATION_length_shared_secret_set_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, long long _swig_go_1) {
+void _wrap_OQS_KEYENCAPSULATION_length_shared_secret_set_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, long long _swig_go_1) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   size_t arg2 ;
   
@@ -1303,7 +1265,7 @@ void _wrap_OQS_KEYENCAPSULATION_length_shared_secret_set_oqsgo_4e8e82db66bc50ad(
 }
 
 
-long long _wrap_OQS_KEYENCAPSULATION_length_shared_secret_get_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0) {
+long long _wrap_OQS_KEYENCAPSULATION_length_shared_secret_get_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   size_t result;
   long long _swig_go_result;
@@ -1316,7 +1278,7 @@ long long _wrap_OQS_KEYENCAPSULATION_length_shared_secret_get_oqsgo_4e8e82db66bc
 }
 
 
-OQS_KEYENCAPSULATION *_wrap_new_OQS_KEYENCAPSULATION_oqsgo_4e8e82db66bc50ad(_gostring_ _swig_go_0) {
+OQS_KEYENCAPSULATION *_wrap_new_OQS_KEYENCAPSULATION_oqsgo_314eaa0e274a5d13(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   OQS_KEYENCAPSULATION *result = 0 ;
   OQS_KEYENCAPSULATION *_swig_go_result;
@@ -1334,7 +1296,7 @@ OQS_KEYENCAPSULATION *_wrap_new_OQS_KEYENCAPSULATION_oqsgo_4e8e82db66bc50ad(_gos
 }
 
 
-void _wrap_delete_OQS_KEYENCAPSULATION_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0) {
+void _wrap_delete_OQS_KEYENCAPSULATION_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   
   arg1 = *(OQS_KEYENCAPSULATION **)&_swig_go_0; 
@@ -1344,7 +1306,7 @@ void _wrap_delete_OQS_KEYENCAPSULATION_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATI
 }
 
 
-intgo _wrap_OQS_KEYENCAPSULATION_keypair_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+intgo _wrap_OQS_KEYENCAPSULATION_keypair_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, _goslice_ _swig_go_1, _goslice_ _swig_go_2) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -1352,26 +1314,30 @@ intgo _wrap_OQS_KEYENCAPSULATION_keypair_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULA
   intgo _swig_go_result;
   
   arg1 = *(OQS_KEYENCAPSULATION **)&_swig_go_0; 
-  
-  arg2 = (char *)malloc(_swig_go_1.n + 1);
-  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
-  arg2[_swig_go_1.n] = '\0';
-  
-  
-  arg3 = (char *)malloc(_swig_go_2.n + 1);
-  memcpy(arg3, _swig_go_2.p, _swig_go_2.n);
-  arg3[_swig_go_2.n] = '\0';
-  
+  {
+    if (_swig_go_1.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg2 = (char *) _swig_go_1.array;
+  }
+  {
+    if (_swig_go_2.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg3 = (char *) _swig_go_2.array;
+  }
   
   result = (OQS_STATUS)(arg1)->keypair(arg2,arg3);
   _swig_go_result = (intgo)result; 
-  free(arg2); 
-  free(arg3); 
+  
+  
+  
+  
   return _swig_go_result;
 }
 
 
-intgo _wrap_OQS_KEYENCAPSULATION_encapsulate_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3) {
+intgo _wrap_OQS_KEYENCAPSULATION_encapsulate_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, _goslice_ _swig_go_1, _goslice_ _swig_go_2, _goslice_ _swig_go_3) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -1380,32 +1346,38 @@ intgo _wrap_OQS_KEYENCAPSULATION_encapsulate_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAP
   intgo _swig_go_result;
   
   arg1 = *(OQS_KEYENCAPSULATION **)&_swig_go_0; 
-  
-  arg2 = (char *)malloc(_swig_go_1.n + 1);
-  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
-  arg2[_swig_go_1.n] = '\0';
-  
-  
-  arg3 = (char *)malloc(_swig_go_2.n + 1);
-  memcpy(arg3, _swig_go_2.p, _swig_go_2.n);
-  arg3[_swig_go_2.n] = '\0';
-  
-  
-  arg4 = (char *)malloc(_swig_go_3.n + 1);
-  memcpy(arg4, _swig_go_3.p, _swig_go_3.n);
-  arg4[_swig_go_3.n] = '\0';
-  
+  {
+    if (_swig_go_1.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg2 = (char *) _swig_go_1.array;
+  }
+  {
+    if (_swig_go_2.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg3 = (char *) _swig_go_2.array;
+  }
+  {
+    if (_swig_go_3.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg4 = (char *) _swig_go_3.array;
+  }
   
   result = (OQS_STATUS)(arg1)->encapsulate(arg2,arg3,(char const *)arg4);
   _swig_go_result = (intgo)result; 
-  free(arg2); 
-  free(arg3); 
-  free(arg4); 
+  
+  
+  
+  
+  
+  
   return _swig_go_result;
 }
 
 
-intgo _wrap_OQS_KEYENCAPSULATION_decapsulate_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAPSULATION *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3) {
+intgo _wrap_OQS_KEYENCAPSULATION_decapsulate_oqsgo_314eaa0e274a5d13(OQS_KEYENCAPSULATION *_swig_go_0, _goslice_ _swig_go_1, _goslice_ _swig_go_2, _goslice_ _swig_go_3) {
   OQS_KEYENCAPSULATION *arg1 = (OQS_KEYENCAPSULATION *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -1414,32 +1386,38 @@ intgo _wrap_OQS_KEYENCAPSULATION_decapsulate_oqsgo_4e8e82db66bc50ad(OQS_KEYENCAP
   intgo _swig_go_result;
   
   arg1 = *(OQS_KEYENCAPSULATION **)&_swig_go_0; 
-  
-  arg2 = (char *)malloc(_swig_go_1.n + 1);
-  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
-  arg2[_swig_go_1.n] = '\0';
-  
-  
-  arg3 = (char *)malloc(_swig_go_2.n + 1);
-  memcpy(arg3, _swig_go_2.p, _swig_go_2.n);
-  arg3[_swig_go_2.n] = '\0';
-  
-  
-  arg4 = (char *)malloc(_swig_go_3.n + 1);
-  memcpy(arg4, _swig_go_3.p, _swig_go_3.n);
-  arg4[_swig_go_3.n] = '\0';
-  
+  {
+    if (_swig_go_1.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg2 = (char *) _swig_go_1.array;
+  }
+  {
+    if (_swig_go_2.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg3 = (char *) _swig_go_2.array;
+  }
+  {
+    if (_swig_go_3.len == 0) {
+      _swig_gopanic("array must contain at least 1 element");
+    }
+    arg4 = (char *) _swig_go_3.array;
+  }
   
   result = (OQS_STATUS)(arg1)->decapsulate(arg2,(char const *)arg3,(char const *)arg4);
   _swig_go_result = (intgo)result; 
-  free(arg2); 
-  free(arg3); 
-  free(arg4); 
+  
+  
+  
+  
+  
+  
   return _swig_go_result;
 }
 
 
-intgo _wrap_OQS_ERROR_oqsgo_4e8e82db66bc50ad() {
+intgo _wrap_OQS_ERROR_oqsgo_314eaa0e274a5d13() {
   OQS_STATUS result;
   intgo _swig_go_result;
   
@@ -1451,7 +1429,7 @@ intgo _wrap_OQS_ERROR_oqsgo_4e8e82db66bc50ad() {
 }
 
 
-intgo _wrap_OQS_SUCCESS_oqsgo_4e8e82db66bc50ad() {
+intgo _wrap_OQS_SUCCESS_oqsgo_314eaa0e274a5d13() {
   OQS_STATUS result;
   intgo _swig_go_result;
   
@@ -1463,7 +1441,7 @@ intgo _wrap_OQS_SUCCESS_oqsgo_4e8e82db66bc50ad() {
 }
 
 
-intgo _wrap_OQS_EXTERNAL_LIB_ERROR_OPENSSL_oqsgo_4e8e82db66bc50ad() {
+intgo _wrap_OQS_EXTERNAL_LIB_ERROR_OPENSSL_oqsgo_314eaa0e274a5d13() {
   OQS_STATUS result;
   intgo _swig_go_result;
   
